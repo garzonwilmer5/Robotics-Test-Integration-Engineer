@@ -67,26 +67,13 @@ private:
     /*!
         Subscriber to trigger the Sound
     */
-
-    /********************************************
-     * USE THIS AMAZING SUBSCRIBER
-     ********************************************/
-    rclcpp::Subscription<std_msgs::msg::Int8>::SharedPtr m_speaker_sub;
-
-    /********************************************
-     * END CODE
-     ********************************************/
+    rclcpp::Subscription<std_msgs::msg::Int8>::SharedPtr m_speaker_sub; /*!< @sa speakerCb() */
 
     /*!
         Publisher to ensure the sound as Done
     */
-    /********************************************
-     * DEFINE THIS AMAZING PUBLISHER
-     ********************************************/
-
-    /********************************************
-     * END CODE
-     ********************************************/
+    rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr m_done_pub;
+    /*!< Publish at topic /device/speaker/done */
     /*!
         Attributes
     */
