@@ -19,7 +19,7 @@ Speaker::Speaker(rclcpp::NodeOptions &options) : Node("speaker", "interfaces", o
 
     // Subscribers
     m_speaker_sub = this->create_subscription<std_msgs::msg::Int8>(
-        "/node_robotics/speaker", 10, std::bind(&Speaker::speakerCb, this, std::placeholders::_1));
+        "/device/speaker/command", 10, std::bind(&Speaker::speakerCb, this, std::placeholders::_1));
 
     /********************************************
      * END CODE
