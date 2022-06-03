@@ -110,8 +110,12 @@ void SpeedController::Controller()
      ********************************************/
     // Use this message
     auto output_error_msg = std::make_unique<geometry_msgs::msg::TwistStamped>();
+    output_error_msg->header.stamp = this->now();
+    output_error_msg->twist.linear.x = vx_ref - m_robot_twist.twist.linear.x;
+    output_error_msg->twist.angular.z = ang_wz -  m_robot_twist.twist.angular.z;
 
     // How could I publish a message of type std::shared_ptr?
+    m_ctrl_error_pub->publish(std::move(output_error_msg));
     /********************************************
      * END CODE
      *  ********************************************/

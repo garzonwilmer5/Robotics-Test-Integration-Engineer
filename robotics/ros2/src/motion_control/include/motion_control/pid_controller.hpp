@@ -73,5 +73,6 @@ private:
     float m_wz_prop_ek1 = 0.0f;
     float m_vx_prop_ek1 = 0.0f;
     float m_prev_ref_vx = 0.0f;
+    float m_prev_ref_wz = 0.0f;
 };
 #endif

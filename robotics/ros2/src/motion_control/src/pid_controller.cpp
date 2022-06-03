@@ -7,34 +7,69 @@
 
 #include "motion_control/pid_controller.hpp"
 
+#include<cmath>
+#define EPSILON 1e-9
+
 PIDController::PIDController() {}
 
 float PIDController::ThrottlePID(float ref_vx, float cur_vx, double dt)
 {
-    /********************************************
-     * DEFINE YOUR AMAZING PID CONTROLLER
-     * Find Documentation here:
-     * https://www.elprocus.com/the-working-of-a-pid-controller/
-     ********************************************/
+    // Don't use controller
+    if(m_throttle_ctrl) 
+        return ref_vx;
+    // reference 0
+    if(std::abs(ref_vx) < EPSILON){ 
+        m_vx_int_error = 0.0;
+        return 0.0f;
+    }
+    
+    float error = ref_vx - cur_vx;
+    //Error derivate
+    float e_diff = (m_vx_prop_ek1 - error) / dt;
+    m_vx_int_error += m_vx_prop_ek1;
+    
+    float controller_signal = m_kp_thr * error
+                              + m_ki_thr * m_vx_int_error
+                              + m_kd_thr * e_diff;
+    
+    m_vx_prop_ek1 = error;
+    m_prev_ref_vx = ref_vx;
 
-    /********************************************
-     * END CODE
-     *  ********************************************/
+    return controller_signal;
 }
+
 
 float PIDController::SteeringPID(float ref_wz, float cur_wz, double dt)
 {
-    /********************************************
-     * DEFINE YOUR AMAZING PID CONTROLLER
-     * Find Documentation here:
-     * https://www.elprocus.com/the-working-of-a-pid-controller/
-     *
-     * FeedForward:
-     * https://zhuanlan.zhihu.com/p/382010500#:~:text=In%20many%20applications,dynamic%20models%20used.
-     * "Combined FeedForward and Feedback Control"
-     ********************************************/
+    // Don't use controller
+    if(m_steering_ctrl) 
+        return ref_wz;
+    // reference 0
+    if(std::abs(ref_wz) < EPSILON){
+        m_vx_int_error = 0.0;
+        return 0.0f;
+    }
+    
 
-    /********************************************
-     * END CODE
-     *  ********************************************/
+    float error = ref_wz - cur_wz;
+    //Error derivate
+    float e_diff = (m_wz_prop_ek1 - error) / dt;
+    m_wz_int_error += m_wz_prop_ek1;
+
+    
+    //feedback control
+    float controller_signal = m_kp_str * m_wz_prop_ek1
+                              + m_ki_str * m_wz_int_error
+                              + m_kd_str * e_diff;
+
+    //feed forward
+    // if the system is Y(s) = 1/(1+s) * U(s)
+    float ffs = (m_prev_ref_wz - ref_wz) / dt + ref_wz;
+    controller_signal += m_kff_str * ffs;
+    
+
+    m_wz_prop_ek1 = error;
+    m_prev_ref_wz = ref_wz;
+
+    return controller_signal;
 }

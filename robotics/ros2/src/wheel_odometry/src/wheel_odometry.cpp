@@ -5,7 +5,6 @@
         Kiwi Campus / AI & Robotics Team
         Develop by: Camilo Andres Alvis and Davidson Rojas
 */
-#include <math.h>
 #include "wheel_odometry/wheel_odometry.hpp"
 #define PI 3.1516
 rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn WheelOdometry::on_configure(
