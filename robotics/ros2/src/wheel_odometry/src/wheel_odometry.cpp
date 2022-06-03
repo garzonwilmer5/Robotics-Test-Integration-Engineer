@@ -5,7 +5,7 @@
         Kiwi Campus / AI & Robotics Team
         Develop by: Camilo Andres Alvis and Davidson Rojas
 */
-
+#include <math.h>
 #include "wheel_odometry/wheel_odometry.hpp"
 #define PI 3.1516
 rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn WheelOdometry::on_configure(
@@ -177,15 +177,12 @@ void WheelOdometry::CalculateOdometry()
     rclcpp::Time curr_time = this->now();
 
     /* Wheels linear velocities */
-    /********************************************
-     * Calculate your Amazing Linear Velocity for each Wheel HERE
-    float FR_vel = ?;
-    float RR_vel = ?;
-    float RL_vel = ?;
-    float FL_vel = ?;
-    /********************************************
-     * END CODE
-     *  ********************************************/
+    float factor = 2 * PI * m_wheel_rad / 60.0f;
+    float FR_vel = factor * m_motors_rpm.rpms_fr;
+    float RR_vel = factor * m_motors_rpm.rpms_rr;
+    float RL_vel = factor * m_motors_rpm.rpms_rl;
+    float FL_vel = factor * m_motors_rpm.rpms_fl;
+ 
 
     /* Left and Right linear velocities */
     float R_vel = (FR_vel + RR_vel) / 2.0f;
@@ -213,21 +210,17 @@ void WheelOdometry::CalculateOdometry()
 
     /* Adding up the displacement */
 
-    /* Wheels linear velocities */
-    /********************************************
-     * Calculate the X and Y positions
-    float delta_X = ?;
-    float delta_Y = ?;
+    /* Calculate the X and Y positions */
+    float delta_X = X_dot * dt;
+    float delta_Y = Y_dot * dt;
 
     // Don't forget the offset :smile:
-    float X = ?;
-    float Y = ?;
+    float X = X_dot + m_previous_x;
+    float Y = Y_dot + m_previous_y;
 
-    m_local_wheel_odom_msg.pose.pose.position.x = ?;
-    m_local_wheel_odom_msg.pose.pose.position.y = ?;
-    /********************************************
-     * END CODE
-     *  ********************************************/
+    m_local_wheel_odom_msg.pose.pose.position.x = X;
+    m_local_wheel_odom_msg.pose.pose.position.y = Y;
+
 
     m_local_wheel_odom_msg.pose.pose.position.z = 0.0f;
     m_local_wheel_odom_msg.pose.covariance = {0.1, 0, 0, 0, 0, 0, 0, 0.1, 0, 0, 0, 0, 0, 0, 0.2, 0, 0, 0,
@@ -267,20 +260,17 @@ void WheelOdometry::CalculateOdometry()
 
     // Adding displacement in [m] to the global message
 
-    /********************************************
-     * Calculate the X and Y positions
-    float delta_X_global = ?;
-    float delta_Y_global = ?;
+    /* Calculate the X and Y global positions */
+    float delta_X_global = X_dot_global * dt;
+    float delta_Y_global = Y_dot_global * dt;
 
     // Don't forget the offset :smile:
-    float X_global = ?;
-    float Y_global = ?;
+    float X_global = delta_X_global + m_previous_x;
+    float Y_global = delta_X_global + m_previous_y;
 
-    m_global_wheel_odom_msg.pose.pose.position.x = ?;
-    m_global_wheel_odom_msg.pose.pose.position.y = ?;
-    /********************************************
-     * END CODE
-     *  ********************************************/
+    m_global_wheel_odom_msg.pose.pose.position.x = X_global;
+    m_global_wheel_odom_msg.pose.pose.position.y = Y_global;
+
 
     m_global_wheel_odom_msg.pose.pose.position.z = 0.0f;
     m_global_wheel_odom_msg.pose.covariance = m_local_wheel_odom_msg.pose.covariance;
@@ -300,19 +290,16 @@ void WheelOdometry::CalculateOdometry()
         m_wheel_odom_global_pub->publish(m_global_wheel_odom_msg);
         // Calculate total distance
 
-        /********************************************
-         * Your Amazing tachometer
-        float d_increment = ?;
+        /* Your Amazing tachometer */
+        float d_increment = sqrt((delta_X_global * delta_X_global)
+                            +(delta_Y_global * delta_Y_global));
 
         // Update previous data
-        m_previous_x = ?;
-        m_previous_y = ?;
+        m_previous_x = X_global;
+        m_previous_y = Y_global;
 
         // Accumulate distance
-        m_total_distance.data = ?;
-        /********************************************
-         * END CODE
-         *  ********************************************/
+        m_total_distance.data += d_increment;
 
         // Publish total distance
         m_absolute_distance_pub->publish(m_total_distance);
