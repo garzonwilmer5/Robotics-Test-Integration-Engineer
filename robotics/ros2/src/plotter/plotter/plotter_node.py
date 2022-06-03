@@ -13,10 +13,13 @@ Code Information:
 # Basics
 import threading
 
+from matplotlib.style import context
+
 # ROS2 dependencies
 import rclpy
 from rclpy.node import Node
 from rclpy.callback_groups import ReentrantCallbackGroup
+from rclpy.executors import Executor
 
 # ROS2 messages
 from geometry_msgs.msg import Twist
@@ -59,16 +62,27 @@ class Plotter(Node):
         self.x_linear_data, self.y_linear_data = [[], []], [[], []]
 
         # Angular
+        (self.control_ang_ln,) = self.ax[1].plot(
+            [], [], "r", label="Control Angular Signal"
+        )
+        (self.error_angular_ln,) = self.ax[1].plot([], [], "b", label="Angular Error")
+        self.controller_ang_lns = [self.control_ang_ln, self.error_angular_ln]
+        self.ax[1].legend()
+        self.x_angular_data, self.y_angular_data = [[], []], [[], []]
 
-        # ---------------------------------------------------------------------
-        # TODO: Initialize the second subplot
-        # Take care about the variables.
-        # NOT define new variables use the variables defined along the code
-        #
-        # Self-contained reference :smile:
-        #
-        # End Code
-        # ---------------------------------------------------------------------
+        # RPM
+        (self.fr_rpm_ln,) = self.ax[2].plot([], [], "r", label="FR RPM")
+        (self.fl_rpm_ln,) = self.ax[2].plot([], [], "b", label="FL RPM")
+        (self.rr_rpm_ln,) = self.ax[2].plot([], [], "g", label="RR RPM")
+        (self.rl_rpm_ln,) = self.ax[2].plot([], [], "c", label="RL RPM")
+        self.rpm_lns = [
+            self.fr_rpm_ln,
+            self.fl_rpm_ln,
+            self.rr_rpm_ln,
+            self.rl_rpm_ln,
+        ]
+        self.ax[2].legend()
+        self.x_rpm_data, self.y_rpm_data = [[], [], [], []], [[], [], [], []]
 
         # =============================================================================
         # ROS2 Stuffs
@@ -127,7 +141,7 @@ class Plotter(Node):
         self.ax[2].set_ylim(-170, 170)
         self.ax[2].set_title("RPMs")
 
-        return [self.controller_lin_lns, self.controller_ang_lns]
+        return [self.controller_lin_lns, self.controller_ang_lns, self.rpm_lns]
 
     def update_plot(self, frame=None) -> None:
         """!
@@ -142,7 +156,11 @@ class Plotter(Node):
 
         self.controller_ang_lns[0].set_data(self.x_ang_data[0], self.y_ang_data[0])
         self.controller_ang_lns[1].set_data(self.x_ang_data[1], self.y_ang_data[1])
-        return [self.controller_lin_lns, self.controller_ang_lns]
+
+        for i in range(4):
+            self.rpm_lns[i].set_data(self.x_rpm_data[i], self.y_rpm_data[i])
+
+        return [self.controller_lin_lns, self.controller_ang_lns, self.rpm_lns]
 
     # Callback functions
     def cb_cmd_vel(self, msg: Twist) -> None:
@@ -177,7 +195,12 @@ class Plotter(Node):
         Callback function to get motors RPMS feedback
         @param msg 'MotorsRPM' message containing the velocities of the robot
         """
-        return
+        wheels_rpms = [msg.rpms_fr, msg.rpms_fl, msg.rpms_rr, msg.rpms_rl]
+
+        for i, rpms in enumerate(wheels_rpms):
+            self.y_rpm_data[i].append(rpms)
+            x_index = len(self.x_linear_data[i])
+            self.x_rpm_data[i].append(x_index + 1)
 
 
 # =============================================================================
@@ -197,6 +220,11 @@ def main(args=None) -> None:
     # TODO: Create a Thread for spin the node
     # Use the function spin_node
     # https://realpython.com/intro-to-python-threading/
+    executor = Executor()
+    executor.add_node(plotter_node)
+    t = threading.Thread(target=executor.spin, daemon=True)
+    t.start()
+
     #
     # End Code
     # ---------------------------------------------------------------------
