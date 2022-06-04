@@ -68,7 +68,7 @@ class Plotter(Node):
         (self.error_angular_ln,) = self.ax[1].plot([], [], "b", label="Angular Error")
         self.controller_ang_lns = [self.control_ang_ln, self.error_angular_ln]
         self.ax[1].legend()
-        self.x_angular_data, self.y_angular_data = [[], []], [[], []]
+        self.x_ang_data, self.y_ang_data = [[], []], [[], []]
 
         # RPM
         (self.fr_rpm_ln,) = self.ax[2].plot([], [], "r", label="FR RPM")
@@ -199,7 +199,7 @@ class Plotter(Node):
 
         for i, rpms in enumerate(wheels_rpms):
             self.y_rpm_data[i].append(rpms)
-            x_index = len(self.x_linear_data[i])
+            x_index = len(self.x_rpm_data[i])
             self.x_rpm_data[i].append(x_index + 1)
 
 
@@ -220,9 +220,8 @@ def main(args=None) -> None:
     # TODO: Create a Thread for spin the node
     # Use the function spin_node
     # https://realpython.com/intro-to-python-threading/
-    executor = Executor()
-    executor.add_node(plotter_node)
-    t = threading.Thread(target=executor.spin, daemon=True)
+
+    t = threading.Thread(target=plotter_node.spin_node, daemon=True)
     t.start()
 
     #

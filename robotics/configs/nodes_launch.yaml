@@ -11,7 +11,7 @@ NODE_LIFECYCLE_MANAGER:
   respawn: true
   respawn_delay: 5.0
 NODE_MOTION_SPEED_CONTROL:
-  launch: 0
+  launch: 1
   node_executable: speed_controller
   package: motion_control
   respawn: true
@@ -29,7 +29,7 @@ NODE_RPM_CONVERTER:
   respawn: true
   respawn_delay: 5.0
 NODE_WHEEL_ODOMETRY:
-  launch: 0
+  launch: 1
   node_executable: wheel_odometry
   package: wheel_odometry
   respawn: true
