@@ -50,12 +50,10 @@ float PIDController::SteeringPID(float ref_wz, float cur_wz, double dt)
         return 0.0f;
     }
     
-
     float error = ref_wz - cur_wz;
     //Error derivate
     float e_diff = (m_wz_prop_ek1 - error) / dt;
     m_wz_int_error += m_wz_prop_ek1 * dt;
-
     
     //feedback control
     float controller_signal = m_kp_str * m_wz_prop_ek1
@@ -63,11 +61,8 @@ float PIDController::SteeringPID(float ref_wz, float cur_wz, double dt)
                               + m_kd_str * e_diff;
 
     //feed forward
-    // if the system is Y(s) = 1/(1+s) * U(s)
-    float ffs = (m_prev_ref_wz - ref_wz) / dt + ref_wz;
-    controller_signal += m_kff_str * ffs;
+    controller_signal += m_kff_str * ref_wz;
     
-
     m_wz_prop_ek1 = error;
     m_prev_ref_wz = ref_wz;
 

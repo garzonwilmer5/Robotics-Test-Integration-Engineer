@@ -264,17 +264,17 @@ Respond below in the same solution branch every question. In case your answer is
 
 6. [Control] What is the function of the FeedForward controller?
   *ANS* This functions is he "inverse" of the plant model, ex:
-  If the transfer function of the plant is Y(s) = 1/(s+a) * U(s), the feedforward function must be f(s)=(s+a)Xref(s), so in a ideal world the output will be Y(s) = (s+a)/(s+a)Xref(s) = Xref(s).
+  If the transfer function of the plant is Y(s) = 1/(s+a) * U(s), the feedforward function must be f(s) = (s+a) * Xref(s), so in a ideal world the output will be Y(s) = (s+a)/(s+a) * Xref(s) = Xref(s).
   It is clarified that the plant does not need to be linear for an inverse function to exist, it simply will not have a representation in Laplace.
 
 7. [ROS2] What is the purpose of `CascadeLifecycleNode` type nodes?
   *ANS* This type of nodes allows to take control of ROS state in order to ensure that the nodes is correctly initialized before execute their methods. The life cycle is modeled as a finite state machine, In the case of the wheel odometry node there are 4 triggers: configure (made the setup of the node), cleanup (set the node to an unconfigured state), activate (Set the node ready for any required process) and deactivate (come back to an inactivate state).
 
 8. [Robotics] Why is a global and a local `Odometry` calculated?
-  *ANS* 
+  *ANS* In local odometry is calculated de pose using the RPMs, in global odometry dis values are corrected using the IMU information.
 
 9. [Robotics] If the robot has 4 differential wheels, what type of chassis is it?
-  *ANS*
+  *ANS* This is a 4 wheel drive fixed chassis.
 
 10. [Docker] Explain with your own words what is the instructions `apt-get autoremove && apt-get clean -y` for?
   *ANS* The instruction `apt-get autoremove` remove dependencies of packages that have been deleted, so they are not already needed. `apt-get clean command` delete the cache files in the local repository, finally the flag `-y` will answer yes to all prompts.
@@ -293,7 +293,7 @@ Respond below in the same solution branch every question. In case your answer is
   *ANS* The plotter node need to capture data at same time this is generated, to keep the plotter node in the same thread that the publishers node some data could miss, since the processor is going to interleave the execution of the nodes. That is why a different thread is needed to not loss data.
 
 15. [Python] Why is the limit on the Y-RPM graph 170?
-  *ANS* At 170 RPM with wheels radius of 0.0079 m, as is set in the environment variables, the maximum linear velocity will be 1.40 m but the maximum linear velocity is set to 1.37 m/s, so the limit of 170 is enough to plot all the values in the graph.
+  *ANS* According to the environment variables the maximum allow RPM to the wheels are 165, so the limit of 170 is enough to plot all the values in the graph.
 
 Next questions are after you finish the project, it doesn't give points, but we really appreciate you feedback:
 * What do you think about this project? Is it hard or enough? Is it to complicated, is it well structure, explanations and instructions are clear?
