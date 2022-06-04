@@ -248,34 +248,52 @@ Reference Image
 Respond below in the same solution branch every question. In case your answer isn't in this file, it'll not be valid:
 
 1. [C++] What is the mean of the number "15" used in the `pthread_kill` inside the destructor method?
+  *ANS* The second parameter of `pthread_kill` function refer to a signal that is send to the thread, the number 15 correspond to "Termination signal".
 
 2. [C++] Why are we using `UniquePointer` instead of `SharedPointers` to publish a ROS2 message?
+  *ANS* By definition an `UniquePointer` is unique, only one pointer refers to that object, in the same way the publisher of a topic should be unique.
 
 3. [Logic] Why are we using an m_multi_sound variable? Explain ...
+  *ANS* This variable is a flag that indicates when play ambient sound. This variable is only used in AmbientSound method and indicate when reproduce the track0, this flag is set to false when another track is going to play and set back to true when it finished, returning to ambient sound.
 
 4. [C++] Why are we freeing the memory allocated by raw pointer "buff" variable and not freeing the memory allocated by the Shared and Unique Pointers? (HARD)
+  *ANS* Shared and Unique Pointers are smart pointers, that means memory will be deallocated automatically when the object can no longer be referenced.
 
 5. [C++] Why should we use a "member variable" (persistent over the class) to storage the integral error? `m_vx_int_error`
+  *ANS* The integral error is an accumulator,if the variable has an local scope in the function this accumulator will be restart in each  method call. That is why is a member variable, to keep the value after the function end.
 
 6. [Control] What is the function of the FeedForward controller?
+  *ANS* This functions is he "inverse" of the plant model, ex:
+  If the transfer function of the plant is Y(s) = 1/(s+a) * U(s), the feedforward function must be f(s)=(s+a)Xref(s), so in a ideal world the output will be Y(s) = (s+a)/(s+a)Xref(s) = Xref(s).
+  It is clarified that the plant does not need to be linear for an inverse function to exist, it simply will not have a representation in Laplace.
 
 7. [ROS2] What is the purpose of `CascadeLifecycleNode` type nodes?
+  *ANS* This type of nodes allows to take control of ROS state in order to ensure that the nodes is correctly initialized before execute their methods. The life cycle is modeled as a finite state machine, In the case of the wheel odometry node there are 4 triggers: configure (made the setup of the node), cleanup (set the node to an unconfigured state), activate (Set the node ready for any required process) and deactivate (come back to an inactivate state).
 
 8. [Robotics] Why is a global and a local `Odometry` calculated?
+  *ANS* 
 
 9. [Robotics] If the robot has 4 differential wheels, what type of chassis is it?
+  *ANS*
 
-10. [Docker] Explain with your own words what is the instructions `apt-get autoremove && apt-get clean -y for?`
+10. [Docker] Explain with your own words what is the instructions `apt-get autoremove && apt-get clean -y` for?
+  *ANS* The instruction `apt-get autoremove` remove dependencies of packages that have been deleted, so they are not already needed. `apt-get clean command` delete the cache files in the local repository, finally the flag `-y` will answer yes to all prompts.
 
 11. [Docker] If you modify a layer what happen with the previous and the next ones?
+  *ANS* Nothing, a container is made one layer over other, previous layers works as a base for the next one and don't change.
 
 12. [Docker] Can we change the basic image (`FROM ubuntu:20.04`) from the docker file to another?
+  *ANS* No, according to the ros2 documentation the used distribution (Galactic) is compatible with ubuntu 20.04 and no other ubuntu versions, and since the other instructions are for an ubuntu OS, is not possible change the basic image.
 
 13. [C++] What is the [libsoft_speed.a](../robotics/ros2/src/motion_control/lib/) file and what is it for?
+  *ANS* An .a file is a group of compiled objects, so libsoft_speed.a contains a whole library already compiled.
+  **Contains not is** the library, the .a archive allow to links several objects at once.
 
 14. [Python] Why should we use a thread to spin the node?
+  *ANS* The plotter node need to capture data at same time this is generated, to keep the plotter node in the same thread that the publishers node some data could miss, since the processor is going to interleave the execution of the nodes. That is why a different thread is needed to not loss data.
 
 15. [Python] Why is the limit on the Y-RPM graph 170?
+  *ANS* At 170 RPM with wheels radius of 0.0079 m, as is set in the environment variables, the maximum linear velocity will be 1.40 m but the maximum linear velocity is set to 1.37 m/s, so the limit of 170 is enough to plot all the values in the graph.
 
 Next questions are after you finish the project, it doesn't give points, but we really appreciate you feedback:
 * What do you think about this project? Is it hard or enough? Is it to complicated, is it well structure, explanations and instructions are clear?

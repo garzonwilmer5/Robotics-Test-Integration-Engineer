@@ -5,7 +5,7 @@ NODE_INTERFACES:
   respawn: true
   respawn_delay: 5.0
 NODE_LIFECYCLE_MANAGER:
-  launch: 0
+  launch: 1
   node_executable: lifecycle_manager
   package: lifecycle_manager
   respawn: true
