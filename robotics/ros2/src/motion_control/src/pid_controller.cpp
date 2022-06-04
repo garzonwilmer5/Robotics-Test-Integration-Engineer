@@ -26,7 +26,7 @@ float PIDController::ThrottlePID(float ref_vx, float cur_vx, double dt)
     float error = ref_vx - cur_vx;
     //Error derivate
     float e_diff = (m_vx_prop_ek1 - error) / dt;
-    m_vx_int_error += m_vx_prop_ek1;
+    m_vx_int_error += m_vx_prop_ek1 * dt;
     
     float controller_signal = m_kp_thr * error
                               + m_ki_thr * m_vx_int_error
@@ -54,7 +54,7 @@ float PIDController::SteeringPID(float ref_wz, float cur_wz, double dt)
     float error = ref_wz - cur_wz;
     //Error derivate
     float e_diff = (m_wz_prop_ek1 - error) / dt;
-    m_wz_int_error += m_wz_prop_ek1;
+    m_wz_int_error += m_wz_prop_ek1 * dt;
 
     
     //feedback control
