@@ -1,5 +1,5 @@
 NODE_INTERFACES:
-  launch: 1
+  launch: 0
   node_executable: interfaces_node
   package: interfaces
   respawn: true
@@ -23,7 +23,7 @@ NODE_PLOTTER:
   respawn: true
   respawn_delay: 5.0
 NODE_RPM_CONVERTER:
-  launch: 0
+  launch: 1
   node_executable: rpm_converter_node
   package: rpm_converter
   respawn: true

@@ -51,7 +51,7 @@ public:
         RpmConverter Class constructor
         @param options: rclcpp::NodeOptions.
     */
-    explicit WheelOdometry(rclcpp::NodeOptions &options) : CascadeLifecycleNode("rpm_converter", options) {}
+    explicit RpmConverter(rclcpp::NodeOptions &options) : CascadeLifecycleNode("rpm_converter", options) {}
     /*!
         RpmConverter Class destructor
         @param void
@@ -80,6 +80,11 @@ public:
         @return void.
     */
     void PublishMotorsControl();
+
+    int getPublishTime(void)
+    {
+        return m_publish_time;
+    }
 
 private:
     // Structures
