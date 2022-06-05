@@ -12,6 +12,7 @@ Code Information:
 
 # Basics
 import threading
+import os
 
 from matplotlib.style import context
 
@@ -24,6 +25,7 @@ from rclpy.executors import Executor
 # ROS2 messages
 from geometry_msgs.msg import Twist
 from geometry_msgs.msg import TwistStamped
+from std_msgs.msg import Int8
 
 # ROS2 Custom Messages
 from usr_msgs.msg import MotorsRPM
@@ -41,6 +43,11 @@ class Plotter(Node):
         """
 
         super().__init__("plotter_node")
+        # =============================================================================
+        # speaker Variables
+        # =============================================================================
+        self.rpm_th = float(os.getenv("RPM_SPEAKER_THRESHOLD", 100.0))
+        self.last_track = 0
 
         # =============================================================================
         # Define Plotter Variables
@@ -118,6 +125,8 @@ class Plotter(Node):
             callback_group=self.callback_group,
         )
 
+        self.pub_speaker = self.create_publisher(Int8, "/device/speaker/command", 10)
+
     # Hack Function to not block the thread
     def spin_node(self) -> None:
         """!
@@ -141,6 +150,11 @@ class Plotter(Node):
         self.ax[2].set_xlim(0, self.window_size)
         self.ax[2].set_ylim(-170, 170)
         self.ax[2].set_title("RPMs")
+
+        # stop default sound
+        msg = Int8()
+        msg.data = 0
+        self.pub_speaker.publish(msg)
 
         return [self.controller_lin_lns, self.controller_ang_lns, self.rpm_lns]
 
@@ -219,6 +233,14 @@ class Plotter(Node):
             self.y_rpm_data[i].append(rpms)
             x_index = len(self.x_rpm_data[i])
             self.x_rpm_data[i].append(x_index + 1)
+
+        # speaker alert
+        max_rpm = max(wheels_rpms, key=abs)
+        msg = Int8()
+        msg.data = 3 if self.rpm_th > max_rpm else 1
+        if self.last_track != msg.data:
+            self.pub_speaker.publish(msg)
+            self.last_track = msg.data
 
 
 # =============================================================================
