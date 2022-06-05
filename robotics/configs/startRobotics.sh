@@ -26,12 +26,15 @@ function parse_yaml {
 
 BUILD=1
 LAUNCH=1
+DELETE_BUILD=1
 for i in "$@"
 do
     case $i in
         -b|--build) BUILD="${2:-1}"
         ;;
         -l|--launch) LAUNCH="${2:-1}"
+        ;;
+        -d|--delete-build) DELETE_BUILD="${2:-1}"
         ;;
         *)
         ;;
