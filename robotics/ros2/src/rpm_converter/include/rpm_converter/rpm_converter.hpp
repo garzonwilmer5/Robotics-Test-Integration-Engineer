@@ -19,6 +19,7 @@
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2/transform_datatypes.h>
 #include <rclcpp/rclcpp.hpp>
+#include "rclcpp_cascade_lifecycle/rclcpp_cascade_lifecycle.hpp"
 
 // ROS2 Messages
 #include "geometry_msgs/msg/twist_stamped.hpp"
@@ -35,22 +36,43 @@
 #include <utility>
 #include <vector>
 
+#define TRANSITION_CONFIGURE 1
+#define TRANSITION_CLEANUP 2
+#define TRANSITION_ACTIVATE 3
+#define TRANSITION_DEACTIVATE 4
+
 using std::placeholders::_1;
 
-class RpmConverter : public rclcpp::Node
+class RpmConverter : public rclcpp_cascade_lifecycle::CascadeLifecycleNode
 {
 
 public:
     /*!
-        RpmConverter Class constructor. Inherits from rclcpp::Node
+        RpmConverter Class constructor
         @param options: rclcpp::NodeOptions.
     */
-    RpmConverter(rclcpp::NodeOptions const &options);
+    explicit WheelOdometry(rclcpp::NodeOptions &options) : CascadeLifecycleNode("rpm_converter", options) {}
     /*!
         RpmConverter Class destructor
         @param void
     */
     ~RpmConverter(){};
+    
+    /*
+        state machine callbacks
+    */
+    rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn on_configure(
+        const rclcpp_lifecycle::State &);
+    rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn on_activate(
+        const rclcpp_lifecycle::State &);
+    rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn on_deactivate(
+        const rclcpp_lifecycle::State &);
+    rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn on_cleanup(
+        const rclcpp_lifecycle::State &);
+    rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn on_shutdown(
+        const rclcpp_lifecycle::State &);
+
+    uint8_t m_state = TRANSITION_ACTIVATE;
 
     /*!
         Publishes the motors RPM control commands to ROS2.
@@ -68,7 +90,7 @@ private:
     } speed_ctrl;
 
     // Publishers
-    rclcpp::Publisher<usr_msgs::msg::MotorsRPM>::SharedPtr
+    rclcpp_lifecycle::LifecyclePublisher<usr_msgs::msg::MotorsRPM>::SharedPtr
         m_motors_rpm_out_pub; /*!< Publish at topic /rpm_converter/motors_rpm_out */
 
     // Subscribers
