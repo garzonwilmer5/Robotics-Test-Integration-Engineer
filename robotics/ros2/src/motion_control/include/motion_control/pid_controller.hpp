@@ -51,6 +51,8 @@ public:
 
 private:
     // Environment variables
+    double m_robot_track = getEnv("ODOMETRY_CHASSIS_TRACK", 0.392f);
+    double m_wheel_rad = getEnv("ODOMETRY_WHEEL_RADIUS", 0.079f);
     bool m_throttle_ctrl = getEnv("SPEED_CONTROLLER_THROTTLE_CONTROL", true);
     bool m_steering_ctrl = getEnv("SPEED_CONTROLLER_STEERING_CONTROL", true);
     // Throttle
@@ -58,11 +60,13 @@ private:
     float m_ki_thr = getEnv("SPEED_CONTROLLER_KI_THROTTLE", 0.2f);
     float m_kd_thr = getEnv("SPEED_CONTROLLER_KD_THROTTLE", 0.0f);
     float m_kff_thr = getEnv("SPEED_CONTROLLER_FF_THROTTLE", 1.0f);
+    float m_tt_thr = getEnv("SPEED_CONTROLLER_TT_THROTTLE", 1.0f);
     // Steering
     float m_kp_str = getEnv("SPEED_CONTROLLER_KP_STEERING", 0.5f);
     float m_ki_str = getEnv("SPEED_CONTROLLER_KI_STEERING", 1.0f);
     float m_kd_str = getEnv("SPEED_CONTROLLER_KD_STEERING", 0.0f);
     float m_kff_str = getEnv("SPEED_CONTROLLER_FF_STEERING", 1.0f);
+    float m_tt_str = getEnv("SPEED_CONTROLLER_TT_STEERING", 1.0f);
     // Velocities
     float m_max_linear_spd = getEnv("SPEED_CONTROLLER_MAX_LIN_VEL", 1.28f);
     float m_max_angular_spd = getEnv("SPEED_CONTROLLER_MAX_ANG_VEL_STATIC", 0.55f);

@@ -5,12 +5,12 @@ export SPEED_CONTROLLER_KP_THROTTLE=0.50    # [float] Proportional constant for 
 export SPEED_CONTROLLER_KI_THROTTLE=0.23    # [float] Integral constant for linear PID control
 export SPEED_CONTROLLER_KD_THROTTLE=0.0     # [float] Derivative constant for linear PID control
 export SPEED_CONTROLLER_FF_THROTTLE=1.0     # [float] Feed Forward constant for linear PID control
-
+export SPEED_CONTROLLER_TT_THROTTLE=1.0     # [float] Anti Windup parameter for linear PID control
 export SPEED_CONTROLLER_KP_STEERING=0.75    # [float] Proportional constant for angular PID control
 export SPEED_CONTROLLER_KI_STEERING=0.2     # [float] Integral constant for angular PID control
 export SPEED_CONTROLLER_KD_STEERING=0.0     # [float] Derivative constant for angular PID control
 export SPEED_CONTROLLER_FF_STEERING=1.0     # [float] Feed Forward constant for angular PID control
-
+export SPEED_CONTROLLER_TT_STEERING=1.0     # [float] Anti Windup parameter for angular PID control
 export SPEED_CONTROLLER_THROTTLE_CONTROL=1 # [int-bool] Enable linear speed control 
 export SPEED_CONTROLLER_STEERING_CONTROL=1 # [int-bool] Enable angular speed control 
 

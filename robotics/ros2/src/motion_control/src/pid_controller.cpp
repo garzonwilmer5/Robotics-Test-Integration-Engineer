@@ -9,6 +9,7 @@
 
 #include<cmath>
 #define EPSILON 1e-9
+#define PI 3.1516
 
 PIDController::PIDController() {}
 
@@ -18,20 +19,35 @@ float PIDController::ThrottlePID(float ref_vx, float cur_vx, double dt)
     if(m_throttle_ctrl) 
         return ref_vx;
     // reference 0
-    if(std::abs(ref_vx) < EPSILON){ 
+    if(std::fabs(ref_vx) < EPSILON)
+    { 
         m_vx_int_error = 0.0;
         return 0.0f;
     }
     
     float error = ref_vx - cur_vx;
-    //Error derivate
+    // Error derivate
     float e_diff = (m_vx_prop_ek1 - error) / dt;
-    m_vx_int_error += m_vx_prop_ek1 * dt;
+
+    // Integral control component
+    float ui = m_vx_int_error + (m_ki_thr * error * dt);
     
     float controller_signal = m_kp_thr * error
-                              + m_ki_thr * m_vx_int_error
+                              + ui
                               + m_kd_thr * e_diff;
-    
+
+    // Anti-Windup: Back-calculation
+    float signal_vx_max = 60.0f * m_max_linear_spd / (2 * PI * m_wheel_rad);
+    float ep = 0;
+    // saturated signal
+    if(signal_vx_max < std::fabs(controller_signal))
+    {
+        ep = controller_signal > 0 ? 
+                signal_vx_max - controller_signal : 
+                -signal_vx_max - controller_signal;
+    }         
+    m_vx_int_error += (m_ki_thr * error + ep / m_tt_thr) *dt;
+
     m_vx_prop_ek1 = error;
     m_prev_ref_vx = ref_vx;
 
@@ -45,7 +61,8 @@ float PIDController::SteeringPID(float ref_wz, float cur_wz, double dt)
     if(m_steering_ctrl) 
         return ref_wz;
     // reference 0
-    if(std::abs(ref_wz) < EPSILON){
+    if(std::fabs(ref_wz) < EPSILON)
+    {
         m_vx_int_error = 0.0;
         return 0.0f;
     }
@@ -53,15 +70,31 @@ float PIDController::SteeringPID(float ref_wz, float cur_wz, double dt)
     float error = ref_wz - cur_wz;
     //Error derivate
     float e_diff = (m_wz_prop_ek1 - error) / dt;
-    m_wz_int_error += m_wz_prop_ek1 * dt;
+
+    // Integral control component
+    float ui = m_wz_int_error + (m_ki_str * error * dt);
     
-    //feedback control
+    // Feedback control
     float controller_signal = m_kp_str * m_wz_prop_ek1
-                              + m_ki_str * m_wz_int_error
+                              + ui
                               + m_kd_str * e_diff;
 
-    //feed forward
+    // Feed forward
     controller_signal += m_kff_str * ref_wz;
+
+    // Anti-Windup: Back-calculation
+    float signal_wz_max = m_max_angular_spd * m_robot_track / 2.0f 
+                          * 60.0f / (2 * PI * m_wheel_rad);
+
+    float ep = 0;
+    // saturated signal
+    if(signal_wz_max < std::fabs(controller_signal))
+    {
+        ep = controller_signal > 0 ? 
+                signal_wz_max - controller_signal : 
+                -signal_wz_max - controller_signal;
+    }
+    m_wz_int_error += (m_ki_str * error + ep / m_tt_str) *dt;
     
     m_wz_prop_ek1 = error;
     m_prev_ref_wz = ref_wz;
