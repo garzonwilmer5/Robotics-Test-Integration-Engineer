@@ -48,6 +48,7 @@ class Plotter(Node):
         self.fig, self.ax = plt.subplots(1, 3)
         self.fig.suptitle("Amazing Plotter", fontsize=16)
         self.fig.set_size_inches(18.5, 10.5)
+        self.window_size = 500
         # =============================================================================
         # Controller Lines
         # =============================================================================
@@ -129,15 +130,15 @@ class Plotter(Node):
         """!
         Function to set the initial plot status.
         """
-        self.ax[0].set_xlim(0, 10000)
+        self.ax[0].set_xlim(0, self.window_size)
         self.ax[0].set_ylim(-3, 3)
         self.ax[0].set_title("Linear Signal / Linear Error")
 
-        self.ax[1].set_xlim(0, 10000)
+        self.ax[1].set_xlim(0, self.window_size)
         self.ax[1].set_ylim(-3, 3)
         self.ax[1].set_title("Angular Signal / Angular Error")
 
-        self.ax[2].set_xlim(0, 10000)
+        self.ax[2].set_xlim(0, self.window_size)
         self.ax[2].set_ylim(-170, 170)
         self.ax[2].set_title("RPMs")
 
@@ -147,6 +148,13 @@ class Plotter(Node):
         """!
         Function to update the current figure
         """
+
+        ## Linear
+        # change limits
+        x_lin_max = len(max(self.x_linear_data, key=len))
+        x_lin_min = max(0, x_lin_max - self.window_size)
+        self.ax[0].set_xlim(x_lin_min, x_lin_max)
+        # update data
         self.controller_lin_lns[0].set_data(
             self.x_linear_data[0], self.y_linear_data[0]
         )
@@ -154,9 +162,19 @@ class Plotter(Node):
             self.x_linear_data[1], self.y_linear_data[1]
         )
 
+        ## Angular
+        # change limits
+        x_ang_max = len(max(self.x_ang_data, key=len))
+        x_ang_min = max(0, x_ang_max - self.window_size)
+        self.ax[1].set_xlim(x_ang_min, x_ang_max)
+        # update data
         self.controller_ang_lns[0].set_data(self.x_ang_data[0], self.y_ang_data[0])
         self.controller_ang_lns[1].set_data(self.x_ang_data[1], self.y_ang_data[1])
 
+        ## RPM
+        x_rpm_max = len(max(self.x_rpm_data, key=len))
+        x_rpm_min = max(0, x_rpm_max - self.window_size)
+        self.ax[2].set_xlim(x_rpm_min, x_rpm_max)
         for i in range(4):
             self.rpm_lns[i].set_data(self.x_rpm_data[i], self.y_rpm_data[i])
 
@@ -229,7 +247,11 @@ def main(args=None) -> None:
     # ---------------------------------------------------------------------
 
     ani = FuncAnimation(
-        plotter_node.fig, plotter_node.update_plot, init_func=plotter_node.plot_init
+        plotter_node.fig,
+        plotter_node.update_plot,
+        init_func=plotter_node.plot_init,
+        interval=plotter_node.window_size,
+        blit=False,
     )
 
     plt.show(block=True)
