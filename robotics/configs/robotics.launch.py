@@ -155,6 +155,13 @@ def generate_launch_description():
             "package": "plotter",
         },
         # ---------------------------------------------------------------------
+        # Custom GPS
+        "NODE_CUSTOM_GPS": {
+            "node_executable": "custom_gps",
+            "node_name": "custom_gps",
+            "package": "custom_gps",
+        },
+        # ---------------------------------------------------------------------
     }
 
     # Add 'launch' and 'respawn' arguments to nodes kwargs
