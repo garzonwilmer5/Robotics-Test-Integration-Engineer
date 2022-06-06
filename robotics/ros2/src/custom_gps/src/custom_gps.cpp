@@ -66,7 +66,6 @@ void CustomGPS::ImuCb(const sensor_msgs::msg::Imu::SharedPtr msg)
 
     tf2::Matrix3x3 m(q);
     m.getRPY(m_imu_roll, m_imu_pitch, m_imu_yaw);
-    m_imu_omega = msg->angular_velocity.z;
 
     m_custom_gps_msg.roll = m_imu_roll;
     m_custom_gps_msg.pitch = m_imu_pitch;
@@ -86,7 +85,9 @@ void CustomGPS::RouterGpsCb(const sensor_msgs::msg::NavSatFix::SharedPtr msg)
 void CustomGPS::MainGpsCb(const sensor_msgs::msg::NavSatFix::SharedPtr msg)
 {
     m_gps_time = msg->header.stamp;
-    if (m_gps_time > m_wifi_time){ // Router signal have priority
+
+    if (m_gps_time.seconds() > m_wifi_time.seconds())// Router signal have priority
+    { 
         m_custom_gps_msg.latitude = msg->latitude;
         m_custom_gps_msg.longitude = msg->longitude;
         m_custom_gps_msg.sensor = "GPS";
