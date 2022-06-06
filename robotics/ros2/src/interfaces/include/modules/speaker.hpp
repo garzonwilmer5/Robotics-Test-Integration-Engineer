@@ -23,6 +23,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+ #include <sys/stat.h>
 
 #include <alsa/asoundlib.h>
 #include <pthread.h>
