@@ -1,0 +1,964 @@
+==23991== Memcheck, a memory error detector
+==23991== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==23991== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==23991== Command: ./robotics/ros2/install/rpm_converter/lib/rpm_converter/rpm_converter_node
+==23991== Parent PID: 23787
+==23991== 
+--23991-- 
+--23991-- Valgrind options:
+--23991--    --leak-check=full
+--23991--    --show-leak-kinds=all
+--23991--    --track-origins=yes
+--23991--    --log-file=valgrid_log/rpm_converter_output.txt
+--23991--    -v
+--23991-- Contents of /proc/version:
+--23991--   Linux version 5.4.0-113-generic (buildd@lcy02-amd64-053) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) #127~18.04.1-Ubuntu SMP Wed May 18 15:40:23 UTC 2022
+--23991-- 
+--23991-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
+--23991-- Page sizes: currently 4096, max supported 4096
+--23991-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--23991-- Reading syms from /workspace/robotics/ros2/build/rpm_converter/rpm_converter_node
+--23991-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--23991--   Considering /usr/lib/debug/.build-id/45/87364908de169dec62ffa538170118c1c3a078.debug ..
+--23991--   .. build-id is valid
+--23991-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--23991--    object doesn't have a symbol table
+--23991--    object doesn't have a dynamic symbol table
+--23991-- Scheduler: using generic scheduler lock implementation.
+--23991-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==23991== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-23991-by-???-on-wilmer
+==23991== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-23991-by-???-on-wilmer
+==23991== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-23991-by-???-on-wilmer
+==23991== 
+==23991== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==23991== don't want to do, unless you know exactly what you're doing,
+==23991== or are doing some strange experiment):
+==23991==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=23991 ...command...
+==23991== 
+==23991== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==23991==   /path/to/gdb ./robotics/ros2/install/rpm_converter/lib/rpm_converter/rpm_converter_node
+==23991== and then give GDB the following command
+==23991==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=23991
+==23991== --pid is optional if only one valgrind process is running
+==23991== 
+--23991-- REDIR: 0x4022e20 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--23991-- REDIR: 0x4022bf0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--23991-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--23991--    object doesn't have a symbol table
+==23991== WARNING: new redirection conflicts with existing -- ignoring it
+--23991--     old: 0x04022e20 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--23991--     new: 0x04022e20 (strlen              ) R-> (2007.0) 0x0483f060 strlen
+--23991-- REDIR: 0x401f600 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
+--23991-- REDIR: 0x4023380 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
+--23991-- Reading syms from /workspace/robotics/ros2/install/usr_msgs/lib/libusr_msgs__rosidl_typesupport_cpp.so
+--23991-- Reading syms from /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librclcpp.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+--23991--   Considering /usr/lib/debug/.build-id/7b/4536f41cdaa5888408e82d0836e33dcf436466.debug ..
+--23991--   .. build-id is valid
+--23991-- Reading syms from /opt/ros/galactic/lib/librcl.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/libtracetools.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librclcpp_lifecycle.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librcutils.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/liblibstatistics_collector.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/libstatistics_msgs__rosidl_typesupport_cpp.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/libgeometry_msgs__rosidl_typesupport_cpp.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librmw.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--23991--   Considering /usr/lib/debug/.build-id/18/78e6b475720c7c51969e69ab2d276fae6d1dee.debug ..
+--23991--   .. build-id is valid
+--23991-- Reading syms from /workspace/robotics/ros2/install/usr_msgs/lib/libusr_msgs__rosidl_typesupport_introspection_cpp.so
+--23991-- Reading syms from /opt/ros/galactic/lib/libcascade_lifecycle_msgs__rosidl_typesupport_cpp.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/libament_index_cpp.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librcl_yaml_param_parser.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librosgraph_msgs__rosidl_typesupport_cpp.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librcl_interfaces__rosidl_typesupport_cpp.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librmw_implementation.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librcl_logging_interface.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librcpputils.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /usr/lib/x86_64-linux-gnu/libm-2.31.so
+--23991--   Considering /usr/lib/debug/.build-id/fe/91b4090ea04c1559ff71dd9290062776618891.debug ..
+--23991--   .. build-id is valid
+--23991-- Reading syms from /opt/ros/galactic/lib/librcl_interfaces__rosidl_typesupport_c.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librcl_logging_spdlog.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librcl_interfaces__rosidl_generator_c.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librosidl_runtime_c.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librcl_lifecycle.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/liblifecycle_msgs__rosidl_typesupport_c.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/liblifecycle_msgs__rosidl_typesupport_cpp.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /usr/lib/x86_64-linux-gnu/libdl-2.31.so
+--23991--   Considering /usr/lib/debug/.build-id/c0/f40155b3f8bf8c494fa800f9ab197ebe20ed6e.debug ..
+--23991--   .. build-id is valid
+--23991-- Reading syms from /opt/ros/galactic/lib/librosidl_typesupport_cpp.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/libstd_msgs__rosidl_typesupport_introspection_cpp.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librosidl_typesupport_introspection_cpp.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/libyaml.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librosidl_typesupport_c.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /usr/lib/x86_64-linux-gnu/libspdlog.so.1.5.0
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/libbuiltin_interfaces__rosidl_generator_c.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/liblifecycle_msgs__rosidl_generator_c.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so
+--23991--    object doesn't have a symbol table
+--23991-- REDIR: 0x4ece480 (libc.so.6:memmove) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ecd780 (libc.so.6:strncpy) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ece7b0 (libc.so.6:strcasecmp) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ecd0a0 (libc.so.6:strcat) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ecd7e0 (libc.so.6:rindex) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ecfc50 (libc.so.6:rawmemchr) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4eeace0 (libc.so.6:wmemchr) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4eea820 (libc.so.6:wcscmp) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ece5e0 (libc.so.6:mempcpy) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ece410 (libc.so.6:bcmp) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ecd710 (libc.so.6:strncmp) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ecd150 (libc.so.6:strcmp) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ece540 (libc.so.6:memset) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4eea7e0 (libc.so.6:wcschr) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ecd670 (libc.so.6:strnlen) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ecd230 (libc.so.6:strcspn) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ece800 (libc.so.6:strncasecmp) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ecd1d0 (libc.so.6:strcpy) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ece950 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4eebf50 (libc.so.6:wcsnlen) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4eea860 (libc.so.6:wcscpy) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ecd820 (libc.so.6:strpbrk) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ecd100 (libc.so.6:index) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ecd630 (libc.so.6:strlen) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ed6bb0 (libc.so.6:memrchr) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ece850 (libc.so.6:strcasecmp_l) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ece3d0 (libc.so.6:memchr) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4eea930 (libc.so.6:wcslen) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ecdae0 (libc.so.6:strspn) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ece750 (libc.so.6:stpncpy) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ece6f0 (libc.so.6:stpcpy) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ecfc90 (libc.so.6:strchrnul) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ece8a0 (libc.so.6:strncasecmp_l) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ece2f0 (libc.so.6:strstr) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4fb6500 (libc.so.6:__strrchr_avx2) redirected to 0x483ea10 (rindex)
+--23991-- REDIR: 0x4ec80e0 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
+--23991-- REDIR: 0x4fb66d0 (libc.so.6:__strlen_avx2) redirected to 0x483ef40 (strlen)
+--23991-- REDIR: 0x4fb2cc0 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x48421e0 (bcmp)
+--23991-- REDIR: 0x4fb1bd0 (libc.so.6:__strcmp_avx2) redirected to 0x483fed0 (strcmp)
+--23991-- REDIR: 0x4fb2010 (libc.so.6:__strncmp_avx2) redirected to 0x483f670 (strncmp)
+--23991-- REDIR: 0x4ec86d0 (libc.so.6:free) redirected to 0x483c9d0 (free)
+--23991-- REDIR: 0x4ec9b10 (libc.so.6:calloc) redirected to 0x483dce0 (calloc)
+--23991-- REDIR: 0x4fb96e0 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x48429f0 (memmove)
+--23991-- REDIR: 0x4cdbb20 (libstdc++.so.6:operator new(unsigned long)) redirected to 0x483bdf0 (operator new(unsigned long))
+--23991-- REDIR: 0x4fb6310 (libc.so.6:__strchrnul_avx2) redirected to 0x4843540 (strchrnul)
+--23991-- REDIR: 0x4cd9d70 (libstdc++.so.6:operator delete(void*)) redirected to 0x483cf50 (operator delete(void*))
+--23991-- Reading syms from /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/x86_64-linux-gnu/libddsc.so.0.8.0
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librmw_dds_common__rosidl_typesupport_cpp.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librmw_dds_common.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/librosidl_typesupport_introspection_c.so
+--23991--    object doesn't have a symbol table
+--23991-- REDIR: 0x40231e0 (ld-linux-x86-64.so.2:stpcpy) redirected to 0x4842710 (stpcpy)
+--23991-- Reading syms from /usr/lib/x86_64-linux-gnu/libssl.so.1.1
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/libiceoryx_binding_c.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/libiceoryx_posh.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/libiceoryx_utils.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /usr/lib/x86_64-linux-gnu/libacl.so.1.1.2253
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/libiceoryx_platform.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /usr/lib/x86_64-linux-gnu/librt-2.31.so
+--23991--   Considering /usr/lib/debug/.build-id/ce/016c975d94bc4770ed8c62d45dea6b71405a2c.debug ..
+--23991--   .. build-id is valid
+--23991-- REDIR: 0x4f5b850 (libc.so.6:__memcpy_chk) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4ecdfa0 (libc.so.6:__GI_strstr) redirected to 0x4843ca0 (__strstr_sse2)
+--23991-- REDIR: 0x4fb9b60 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x48428e0 (memset)
+--23991-- REDIR: 0x4fb96d0 (libc.so.6:__memcpy_chk_avx_unaligned_erms) redirected to 0x4843b10 (__memcpy_chk)
+--23991-- REDIR: 0x4fb6870 (libc.so.6:__strnlen_avx2) redirected to 0x483eee0 (strnlen)
+--23991-- REDIR: 0x4cdbb60 (libstdc++.so.6:operator new(unsigned long, std::nothrow_t const&)) redirected to 0x483c080 (operator new(unsigned long, std::nothrow_t const&))
+--23991-- REDIR: 0x4ee93f0 (libc.so.6:__strstr_sse2_unaligned) redirected to 0x4843c20 (strstr)
+--23991-- REDIR: 0x4ec8e80 (libc.so.6:realloc) redirected to 0x483df30 (realloc)
+--23991-- REDIR: 0x4fb2530 (libc.so.6:__memchr_avx2) redirected to 0x4840050 (memchr)
+--23991-- REDIR: 0x4cd9d80 (libstdc++.so.6:operator delete(void*, unsigned long)) redirected to 0x483d160 (operator delete(void*, unsigned long))
+--23991-- REDIR: 0x4fb60e0 (libc.so.6:__strchr_avx2) redirected to 0x483ebf0 (index)
+--23991-- REDIR: 0x4fb2800 (libc.so.6:__rawmemchr_avx2) redirected to 0x4843580 (rawmemchr)
+--23991-- REDIR: 0x4fb96c0 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4843660 (mempcpy)
+--23991-- REDIR: 0x4fb1820 (libc.so.6:__strcspn_sse42) redirected to 0x4843e10 (strcspn)
+--23991-- REDIR: 0x4fb7fa0 (libc.so.6:__strncpy_avx2) redirected to 0x483f230 (strncpy)
+--23991-- REDIR: 0x4fb7c10 (libc.so.6:__strcpy_avx2) redirected to 0x483f090 (strcpy)
+--23991-- REDIR: 0x4fb1aa0 (libc.so.6:__strspn_sse42) redirected to 0x4843ef0 (strspn)
+--23991-- Reading syms from /opt/ros/galactic/lib/librmw_dds_common__rosidl_typesupport_introspection_cpp.so
+--23991--    object doesn't have a symbol table
+--23991-- REDIR: 0x4cdbb80 (libstdc++.so.6:operator new[](unsigned long)) redirected to 0x483c510 (operator new[](unsigned long))
+--23991-- Reading syms from /opt/ros/galactic/lib/librcl_interfaces__rosidl_typesupport_introspection_c.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_c.so
+--23991--    object doesn't have a symbol table
+--23991-- REDIR: 0x4cd9da0 (libstdc++.so.6:operator delete[](void*)) redirected to 0x483d6e0 (operator delete[](void*))
+--23991-- Reading syms from /opt/ros/galactic/lib/librcl_interfaces__rosidl_typesupport_introspection_cpp.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/liblifecycle_msgs__rosidl_typesupport_introspection_c.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/liblifecycle_msgs__rosidl_typesupport_introspection_cpp.so
+--23991--    object doesn't have a symbol table
+--23991-- Reading syms from /opt/ros/galactic/lib/libcascade_lifecycle_msgs__rosidl_typesupport_introspection_cpp.so
+--23991--    object doesn't have a symbol table
+--23991-- REDIR: 0x4fb8900 (libc.so.6:__stpcpy_avx2) redirected to 0x4842300 (stpcpy)
+--23991-- Reading syms from /opt/ros/galactic/lib/libgeometry_msgs__rosidl_typesupport_introspection_cpp.so
+--23991--    object doesn't have a symbol table
+--23991-- REDIR: 0x4ecd6b0 (libc.so.6:strncat) redirected to 0x48331d0 (_vgnU_ifunc_wrapper)
+--23991-- REDIR: 0x4fb7200 (libc.so.6:__strncat_avx2) redirected to 0x483ede0 (strncat)
+==23991== 
+==23991== HEAP SUMMARY:
+==23991==     in use at exit: 54,688 bytes in 122 blocks
+==23991==   total heap usage: 10,740 allocs, 10,618 frees, 5,077,551 bytes allocated
+==23991== 
+==23991== Searching for pointers to 122 not-freed blocks
+==23991== Checked 809,680 bytes
+==23991== 
+==23991== 24 bytes in 1 blocks are still reachable in loss record 1 of 50
+==23991==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x589063C: ddsrt_calloc (in /opt/ros/galactic/lib/x86_64-linux-gnu/libddsc.so.0.8.0)
+==23991==    by 0x58939E4: ddsrt_thread_cleanup_push (in /opt/ros/galactic/lib/x86_64-linux-gnu/libddsc.so.0.8.0)
+==23991==    by 0x585873C: lookup_thread_state_real (in /opt/ros/galactic/lib/x86_64-linux-gnu/libddsc.so.0.8.0)
+==23991==    by 0x5858A1D: thread_states_init (in /opt/ros/galactic/lib/x86_64-linux-gnu/libddsc.so.0.8.0)
+==23991==    by 0x5869767: dds_init (in /opt/ros/galactic/lib/x86_64-linux-gnu/libddsc.so.0.8.0)
+==23991==    by 0x587CCD1: dds_create_guardcondition (in /opt/ros/galactic/lib/x86_64-linux-gnu/libddsc.so.0.8.0)
+==23991==    by 0x575615D: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B876A5: ??? (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4A2D3DF: rclcpp::GuardCondition::GuardCondition(std::shared_ptr<rclcpp::Context>) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A1C058: rclcpp::Executor::Executor(rclcpp::ExecutorOptions const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A2106C: rclcpp::executors::SingleThreadedExecutor::SingleThreadedExecutor(rclcpp::ExecutorOptions const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991== 
+==23991== 64 bytes in 1 blocks are still reachable in loss record 2 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x52276B8: rosidl_message_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_message_type_support_t>(rosidl_message_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5756E94: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5766FB0: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5767406: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5768BF9: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5769ED7: rmw_create_node (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B8D2E3: rcl_node_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4A49737: rclcpp::node_interfaces::NodeBase::NodeBase(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::shared_ptr<rclcpp::Context>, rcl_node_options_t const&, bool, bool) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4BD73BA: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991==    by 0x48BF532: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x48C06E7: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991== 
+==23991== 64 bytes in 1 blocks are still reachable in loss record 3 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x52696B8: rosidl_message_type_support_t const* rosidl_typesupport_c::get_typesupport_handle_function<rosidl_message_type_support_t>(rosidl_message_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_c.so)
+==23991==    by 0x5756F62: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5766FB0: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5767406: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x57676DF: rmw_create_publisher (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B8E6F2: rcl_publisher_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4B8A6DC: rcl_logging_rosout_init_publisher_for_node (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4B8D3D9: rcl_node_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4A49737: rclcpp::node_interfaces::NodeBase::NodeBase(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::shared_ptr<rclcpp::Context>, rcl_node_options_t const&, bool, bool) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4BD73BA: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991==    by 0x48BF532: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991== 
+==23991== 64 bytes in 1 blocks are still reachable in loss record 4 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x5227E18: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4A9C898: rclcpp::Service<rcl_interfaces::srv::GetParameters>::Service(std::shared_ptr<rcl_node_t>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::AnyServiceCallback<rcl_interfaces::srv::GetParameters>, rcl_service_options_t&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A91F32: rclcpp::ParameterService::ParameterService(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, rclcpp::node_interfaces::NodeParametersInterface*, rmw_qos_profile_t const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A59D29: rclcpp::node_interfaces::NodeParameters::NodeParameters(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeLoggingInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeTopicsInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeClockInterface>, std::vector<rclcpp::Parameter, std::allocator<rclcpp::Parameter> > const&, bool, bool, rclcpp::QoS const&, rclcpp::PublisherOptionsBase const&, bool, bool) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4BD7952: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991==    by 0x48BF532: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x48C06E7: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x13197B: RpmConverter::RpmConverter(rclcpp::NodeOptions&) (in /workspace/robotics/ros2/build/rpm_converter/rpm_converter_node)
+==23991== 
+==23991== 64 bytes in 1 blocks are still reachable in loss record 5 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x5227E18: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4A9D438: rclcpp::Service<rcl_interfaces::srv::GetParameterTypes>::Service(std::shared_ptr<rcl_node_t>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::AnyServiceCallback<rcl_interfaces::srv::GetParameterTypes>, rcl_service_options_t&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A9233B: rclcpp::ParameterService::ParameterService(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, rclcpp::node_interfaces::NodeParametersInterface*, rmw_qos_profile_t const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A59D29: rclcpp::node_interfaces::NodeParameters::NodeParameters(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeLoggingInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeTopicsInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeClockInterface>, std::vector<rclcpp::Parameter, std::allocator<rclcpp::Parameter> > const&, bool, bool, rclcpp::QoS const&, rclcpp::PublisherOptionsBase const&, bool, bool) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4BD7952: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991==    by 0x48BF532: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x48C06E7: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x13197B: RpmConverter::RpmConverter(rclcpp::NodeOptions&) (in /workspace/robotics/ros2/build/rpm_converter/rpm_converter_node)
+==23991== 
+==23991== 64 bytes in 1 blocks are still reachable in loss record 6 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x5227E18: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4A9DFD8: rclcpp::Service<rcl_interfaces::srv::SetParameters>::Service(std::shared_ptr<rcl_node_t>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::AnyServiceCallback<rcl_interfaces::srv::SetParameters>, rcl_service_options_t&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A92745: rclcpp::ParameterService::ParameterService(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, rclcpp::node_interfaces::NodeParametersInterface*, rmw_qos_profile_t const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A59D29: rclcpp::node_interfaces::NodeParameters::NodeParameters(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeLoggingInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeTopicsInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeClockInterface>, std::vector<rclcpp::Parameter, std::allocator<rclcpp::Parameter> > const&, bool, bool, rclcpp::QoS const&, rclcpp::PublisherOptionsBase const&, bool, bool) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4BD7952: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991==    by 0x48BF532: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x48C06E7: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x13197B: RpmConverter::RpmConverter(rclcpp::NodeOptions&) (in /workspace/robotics/ros2/build/rpm_converter/rpm_converter_node)
+==23991== 
+==23991== 64 bytes in 1 blocks are still reachable in loss record 7 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x5227E18: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4A9EB78: rclcpp::Service<rcl_interfaces::srv::SetParametersAtomically>::Service(std::shared_ptr<rcl_node_t>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::AnyServiceCallback<rcl_interfaces::srv::SetParametersAtomically>, rcl_service_options_t&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A92B4F: rclcpp::ParameterService::ParameterService(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, rclcpp::node_interfaces::NodeParametersInterface*, rmw_qos_profile_t const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A59D29: rclcpp::node_interfaces::NodeParameters::NodeParameters(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeLoggingInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeTopicsInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeClockInterface>, std::vector<rclcpp::Parameter, std::allocator<rclcpp::Parameter> > const&, bool, bool, rclcpp::QoS const&, rclcpp::PublisherOptionsBase const&, bool, bool) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4BD7952: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991==    by 0x48BF532: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x48C06E7: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x13197B: RpmConverter::RpmConverter(rclcpp::NodeOptions&) (in /workspace/robotics/ros2/build/rpm_converter/rpm_converter_node)
+==23991== 
+==23991== 64 bytes in 1 blocks are still reachable in loss record 8 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x5227E18: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4A9F718: rclcpp::Service<rcl_interfaces::srv::DescribeParameters>::Service(std::shared_ptr<rcl_node_t>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::AnyServiceCallback<rcl_interfaces::srv::DescribeParameters>, rcl_service_options_t&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A92F59: rclcpp::ParameterService::ParameterService(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, rclcpp::node_interfaces::NodeParametersInterface*, rmw_qos_profile_t const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A59D29: rclcpp::node_interfaces::NodeParameters::NodeParameters(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeLoggingInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeTopicsInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeClockInterface>, std::vector<rclcpp::Parameter, std::allocator<rclcpp::Parameter> > const&, bool, bool, rclcpp::QoS const&, rclcpp::PublisherOptionsBase const&, bool, bool) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4BD7952: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991==    by 0x48BF532: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x48C06E7: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x13197B: RpmConverter::RpmConverter(rclcpp::NodeOptions&) (in /workspace/robotics/ros2/build/rpm_converter/rpm_converter_node)
+==23991== 
+==23991== 64 bytes in 1 blocks are still reachable in loss record 9 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x5227E18: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4AA02B8: rclcpp::Service<rcl_interfaces::srv::ListParameters>::Service(std::shared_ptr<rcl_node_t>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::AnyServiceCallback<rcl_interfaces::srv::ListParameters>, rcl_service_options_t&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A93359: rclcpp::ParameterService::ParameterService(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, rclcpp::node_interfaces::NodeParametersInterface*, rmw_qos_profile_t const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A59D29: rclcpp::node_interfaces::NodeParameters::NodeParameters(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeLoggingInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeTopicsInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeClockInterface>, std::vector<rclcpp::Parameter, std::allocator<rclcpp::Parameter> > const&, bool, bool, rclcpp::QoS const&, rclcpp::PublisherOptionsBase const&, bool, bool) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4BD7952: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991==    by 0x48BF532: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x48C06E7: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x13197B: RpmConverter::RpmConverter(rclcpp::NodeOptions&) (in /workspace/robotics/ros2/build/rpm_converter/rpm_converter_node)
+==23991== 
+==23991== 64 bytes in 1 blocks are still reachable in loss record 10 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x52276B8: rosidl_message_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_message_type_support_t>(rosidl_message_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5756E94: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5766FB0: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5767406: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x57676DF: rmw_create_publisher (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B8E6F2: rcl_publisher_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4AA769E: rclcpp::PublisherBase::PublisherBase(rclcpp::node_interfaces::NodeBaseInterface*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rosidl_message_type_support_t const&, rcl_publisher_options_t const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A68395: rclcpp::Publisher<rcl_interfaces::msg::ParameterEvent_<std::allocator<void> >, std::allocator<void> >::Publisher(rclcpp::node_interfaces::NodeBaseInterface*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&, rclcpp::PublisherOptionsWithAllocator<std::allocator<void> > const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A69779: std::_Function_handler<std::shared_ptr<rclcpp::PublisherBase> (rclcpp::node_interfaces::NodeBaseInterface*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&), rclcpp::PublisherFactory rclcpp::create_publisher_factory<rcl_interfaces::msg::ParameterEvent_<std::allocator<void> >, std::allocator<void>, rclcpp::Publisher<rcl_interfaces::msg::ParameterEvent_<std::allocator<void> >, std::allocator<void> > >(rclcpp::PublisherOptionsWithAllocator<std::allocator<void> > const&)::{lambda(rclcpp::node_interfaces::NodeBaseInterface*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&)#1}>::_M_invoke(std::_Any_data const&, rclcpp::node_interfaces::NodeBaseInterface*&&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A6B92A: rclcpp::node_interfaces::NodeTopics::create_publisher(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::PublisherFactory const&, rclcpp::QoS const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A630FA: std::shared_ptr<rclcpp::Publisher<rcl_interfaces::msg::ParameterEvent_<std::allocator<void> >, std::allocator<void> > > rclcpp::detail::create_publisher<rcl_interfaces::msg::ParameterEvent_<std::allocator<void> >, std::allocator<void>, rclcpp::Publisher<rcl_interfaces::msg::ParameterEvent_<std::allocator<void> >, std::allocator<void> >, std::shared_ptr<rclcpp::node_interfaces::NodeTopicsInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeTopicsInterface> >(std::shared_ptr<rclcpp::node_interfaces::NodeTopicsInterface>&, std::shared_ptr<rclcpp::node_interfaces::NodeTopicsInterface>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&, rclcpp::PublisherOptionsWithAllocator<std::allocator<void> > const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991== 
+==23991== 64 bytes in 1 blocks are still reachable in loss record 11 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x52696B8: rosidl_message_type_support_t const* rosidl_typesupport_c::get_typesupport_handle_function<rosidl_message_type_support_t>(rosidl_message_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_c.so)
+==23991==    by 0x5756F62: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5766FB0: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5767406: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x57676DF: rmw_create_publisher (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B8E6F2: rcl_publisher_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x5206917: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5207345: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5208D88: rcl_lifecycle_state_machine_init (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x4BE1B75: rclcpp_lifecycle::LifecycleNode::LifecycleNodeInterfaceImpl::init(bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991==    by 0x4BD7F15: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991== 
+==23991== 64 bytes in 1 blocks are still reachable in loss record 12 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x401677C: resize_scopes (dl-open.c:282)
+==23991==    by 0x401677C: dl_open_worker (dl-open.c:693)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4015609: _dl_open (dl-open.c:837)
+==23991==    by 0x522134B: dlopen_doit (dlopen.c:66)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4F8E9F2: _dl_catch_error (dl-error-skeleton.c:227)
+==23991==    by 0x5221B58: _dlerror_run (dlerror.c:170)
+==23991==    by 0x52213D9: dlopen@@GLIBC_2.2.5 (dlopen.c:87)
+==23991==    by 0x4BFF10B: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991==    by 0x52696C8: rosidl_message_type_support_t const* rosidl_typesupport_c::get_typesupport_handle_function<rosidl_message_type_support_t>(rosidl_message_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_c.so)
+==23991== 
+==23991== 64 bytes in 1 blocks are still reachable in loss record 13 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x5227E18: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x5207111: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5207380: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5208D88: rcl_lifecycle_state_machine_init (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x4BE1B75: rclcpp_lifecycle::LifecycleNode::LifecycleNodeInterfaceImpl::init(bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991==    by 0x4BD7F15: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991==    by 0x48BF532: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x48C06E7: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991== 
+==23991== 64 bytes in 1 blocks are still reachable in loss record 14 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x5227E18: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x5207170: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5207380: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5208D88: rcl_lifecycle_state_machine_init (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x4BE1B75: rclcpp_lifecycle::LifecycleNode::LifecycleNodeInterfaceImpl::init(bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991==    by 0x4BD7F15: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991==    by 0x48BF532: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x48C06E7: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991== 
+==23991== 64 bytes in 1 blocks are still reachable in loss record 15 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x5227E18: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x5207195: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5207380: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5208D88: rcl_lifecycle_state_machine_init (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x4BE1B75: rclcpp_lifecycle::LifecycleNode::LifecycleNodeInterfaceImpl::init(bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991==    by 0x4BD7F15: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991==    by 0x48BF532: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x48C06E7: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991== 
+==23991== 64 bytes in 1 blocks are still reachable in loss record 16 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x5227E18: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x52071BF: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5207380: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5208D88: rcl_lifecycle_state_machine_init (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x4BE1B75: rclcpp_lifecycle::LifecycleNode::LifecycleNodeInterfaceImpl::init(bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991==    by 0x4BD7F15: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991==    by 0x48BF532: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x48C06E7: rclcpp_cascade_lifecycle::CascadeLifecycleNode::CascadeLifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991== 
+==23991== 64 bytes in 1 blocks are still reachable in loss record 17 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x52276B8: rosidl_message_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_message_type_support_t>(rosidl_message_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5756E94: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5766FB0: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5767406: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x57676DF: rmw_create_publisher (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B8E6F2: rcl_publisher_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4AA769E: rclcpp::PublisherBase::PublisherBase(rclcpp::node_interfaces::NodeBaseInterface*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rosidl_message_type_support_t const&, rcl_publisher_options_t const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x48EBB65: rclcpp::Publisher<cascade_lifecycle_msgs::msg::Activation_<std::allocator<void> >, std::allocator<void> >::Publisher(rclcpp::node_interfaces::NodeBaseInterface*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&, rclcpp::PublisherOptionsWithAllocator<std::allocator<void> > const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x48EC373: std::_Function_handler<std::shared_ptr<rclcpp::PublisherBase> (rclcpp::node_interfaces::NodeBaseInterface*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&), rclcpp::PublisherFactory rclcpp::create_publisher_factory<cascade_lifecycle_msgs::msg::Activation_<std::allocator<void> >, std::allocator<void>, rclcpp_lifecycle::LifecyclePublisher<cascade_lifecycle_msgs::msg::Activation_<std::allocator<void> >, std::allocator<void> > >(rclcpp::PublisherOptionsWithAllocator<std::allocator<void> > const&)::{lambda(rclcpp::node_interfaces::NodeBaseInterface*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&)#1}>::_M_invoke(std::_Any_data const&, rclcpp::node_interfaces::NodeBaseInterface*&&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x4A6B92A: rclcpp::node_interfaces::NodeTopics::create_publisher(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::PublisherFactory const&, rclcpp::QoS const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x48DA5B1: std::shared_ptr<rclcpp_lifecycle::LifecyclePublisher<cascade_lifecycle_msgs::msg::Activation_<std::allocator<void> >, std::allocator<void> > > rclcpp::detail::create_publisher<cascade_lifecycle_msgs::msg::Activation_<std::allocator<void> >, std::allocator<void>, rclcpp_lifecycle::LifecyclePublisher<cascade_lifecycle_msgs::msg::Activation_<std::allocator<void> >, std::allocator<void> >, rclcpp_lifecycle::LifecycleNode, rclcpp_lifecycle::LifecycleNode>(rclcpp_lifecycle::LifecycleNode&, rclcpp_lifecycle::LifecycleNode&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&, rclcpp::PublisherOptionsWithAllocator<std::allocator<void> > const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991== 
+==23991== 64 bytes in 1 blocks are still reachable in loss record 18 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x52276B8: rosidl_message_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_message_type_support_t>(rosidl_message_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5756E94: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5766FB0: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5767406: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x57676DF: rmw_create_publisher (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B8E6F2: rcl_publisher_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4AA769E: rclcpp::PublisherBase::PublisherBase(rclcpp::node_interfaces::NodeBaseInterface*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rosidl_message_type_support_t const&, rcl_publisher_options_t const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x48EC6B5: rclcpp::Publisher<cascade_lifecycle_msgs::msg::State_<std::allocator<void> >, std::allocator<void> >::Publisher(rclcpp::node_interfaces::NodeBaseInterface*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&, rclcpp::PublisherOptionsWithAllocator<std::allocator<void> > const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x48ECEC3: std::_Function_handler<std::shared_ptr<rclcpp::PublisherBase> (rclcpp::node_interfaces::NodeBaseInterface*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&), rclcpp::PublisherFactory rclcpp::create_publisher_factory<cascade_lifecycle_msgs::msg::State_<std::allocator<void> >, std::allocator<void>, rclcpp_lifecycle::LifecyclePublisher<cascade_lifecycle_msgs::msg::State_<std::allocator<void> >, std::allocator<void> > >(rclcpp::PublisherOptionsWithAllocator<std::allocator<void> > const&)::{lambda(rclcpp::node_interfaces::NodeBaseInterface*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&)#1}>::_M_invoke(std::_Any_data const&, rclcpp::node_interfaces::NodeBaseInterface*&&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991==    by 0x4A6B92A: rclcpp::node_interfaces::NodeTopics::create_publisher(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::PublisherFactory const&, rclcpp::QoS const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x48DA941: std::shared_ptr<rclcpp_lifecycle::LifecyclePublisher<cascade_lifecycle_msgs::msg::State_<std::allocator<void> >, std::allocator<void> > > rclcpp::detail::create_publisher<cascade_lifecycle_msgs::msg::State_<std::allocator<void> >, std::allocator<void>, rclcpp_lifecycle::LifecyclePublisher<cascade_lifecycle_msgs::msg::State_<std::allocator<void> >, std::allocator<void> >, rclcpp_lifecycle::LifecycleNode, rclcpp_lifecycle::LifecycleNode>(rclcpp_lifecycle::LifecycleNode&, rclcpp_lifecycle::LifecycleNode&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&, rclcpp::PublisherOptionsWithAllocator<std::allocator<void> > const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991== 
+==23991== 64 bytes in 1 blocks are still reachable in loss record 19 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x52276B8: rosidl_message_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_message_type_support_t>(rosidl_message_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5756E94: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5767DC7: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x57681E7: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x576A6FF: rmw_create_subscription (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B93B3E: rcl_subscription_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4AAFE8D: rclcpp::SubscriptionBase::SubscriptionBase(rclcpp::node_interfaces::NodeBaseInterface*, rosidl_message_type_support_t const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rcl_subscription_options_t const&, bool) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x16570E: rclcpp::Subscription<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void>, rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > >::Subscription(rclcpp::node_interfaces::NodeBaseInterface*, rosidl_message_type_support_t const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&, rclcpp::AnySubscriptionCallback<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> >, rclcpp::SubscriptionOptionsWithAllocator<std::allocator<void> > const&, std::shared_ptr<rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > >, std::shared_ptr<rclcpp::topic_statistics::SubscriptionTopicStatistics<geometry_msgs::msg::Twist_<std::allocator<void> > > >) (in /workspace/robotics/ros2/build/rpm_converter/rpm_converter_node)
+==23991==    by 0x16341D: void __gnu_cxx::new_allocator<rclcpp::Subscription<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void>, rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > > >::construct<rclcpp::Subscription<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void>, rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > >, rclcpp::node_interfaces::NodeBaseInterface*&, rosidl_message_type_support_t const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&, rclcpp::AnySubscriptionCallback<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > const&, rclcpp::SubscriptionOptionsWithAllocator<std::allocator<void> > const&, std::shared_ptr<rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > > const&, std::shared_ptr<rclcpp::topic_statistics::SubscriptionTopicStatistics<geometry_msgs::msg::Twist_<std::allocator<void> > > > const&>(rclcpp::Subscription<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void>, rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > >*, rclcpp::node_interfaces::NodeBaseInterface*&, rosidl_message_type_support_t const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&, rclcpp::AnySubscriptionCallback<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > const&, rclcpp::SubscriptionOptionsWithAllocator<std::allocator<void> > const&, std::shared_ptr<rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > > const&, std::shared_ptr<rclcpp::topic_statistics::SubscriptionTopicStatistics<geometry_msgs::msg::Twist_<std::allocator<void> > > > const&) (in /workspace/robotics/ros2/build/rpm_converter/rpm_converter_node)
+==23991==    by 0x1608A5: void std::allocator_traits<std::allocator<rclcpp::Subscription<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void>, rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > > > >::construct<rclcpp::Subscription<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void>, rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > >, rclcpp::node_interfaces::NodeBaseInterface*&, rosidl_message_type_support_t const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&, rclcpp::AnySubscriptionCallback<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > const&, rclcpp::SubscriptionOptionsWithAllocator<std::allocator<void> > const&, std::shared_ptr<rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > > const&, std::shared_ptr<rclcpp::topic_statistics::SubscriptionTopicStatistics<geometry_msgs::msg::Twist_<std::allocator<void> > > > const&>(std::allocator<rclcpp::Subscription<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void>, rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > > >&, rclcpp::Subscription<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void>, rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > >*, rclcpp::node_interfaces::NodeBaseInterface*&, rosidl_message_type_support_t const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&, rclcpp::AnySubscriptionCallback<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > const&, rclcpp::SubscriptionOptionsWithAllocator<std::allocator<void> > const&, std::shared_ptr<rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > > const&, std::shared_ptr<rclcpp::topic_statistics::SubscriptionTopicStatistics<geometry_msgs::msg::Twist_<std::allocator<void> > > > const&) (in /workspace/robotics/ros2/build/rpm_converter/rpm_converter_node)
+==23991==    by 0x15D90A: std::_Sp_counted_ptr_inplace<rclcpp::Subscription<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void>, rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > >, std::allocator<rclcpp::Subscription<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void>, rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > > >, (__gnu_cxx::_Lock_policy)2>::_Sp_counted_ptr_inplace<rclcpp::node_interfaces::NodeBaseInterface*&, rosidl_message_type_support_t const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&, rclcpp::AnySubscriptionCallback<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > const&, rclcpp::SubscriptionOptionsWithAllocator<std::allocator<void> > const&, std::shared_ptr<rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > > const&, std::shared_ptr<rclcpp::topic_statistics::SubscriptionTopicStatistics<geometry_msgs::msg::Twist_<std::allocator<void> > > > const&>(std::allocator<rclcpp::Subscription<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void>, rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > > >, rclcpp::node_interfaces::NodeBaseInterface*&, rosidl_message_type_support_t const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&, rclcpp::AnySubscriptionCallback<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > const&, rclcpp::SubscriptionOptionsWithAllocator<std::allocator<void> > const&, std::shared_ptr<rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > > const&, std::shared_ptr<rclcpp::topic_statistics::SubscriptionTopicStatistics<geometry_msgs::msg::Twist_<std::allocator<void> > > > const&) (in /workspace/robotics/ros2/build/rpm_converter/rpm_converter_node)
+==23991== 
+==23991== 72 bytes in 1 blocks are still reachable in loss record 20 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4C00FD2: rcutils_string_map_init (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFC90A: rcutils_logging_initialize_with_allocator (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFCC2C: rcutils_logging_initialize (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4B88004: rcl_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4A0BC2B: rclcpp::Context::init(int, char const* const*, rclcpp::InitOptions const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4AE1A2E: rclcpp::init(int, char const* const*, rclcpp::InitOptions const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x12DD61: main (in /workspace/robotics/ros2/build/rpm_converter/rpm_converter_node)
+==23991== 
+==23991== 79 bytes in 1 blocks are still reachable in loss record 21 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4C0035C: rcutils_strndup (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFF15E: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991==    by 0x52696C8: rosidl_message_type_support_t const* rosidl_typesupport_c::get_typesupport_handle_function<rosidl_message_type_support_t>(rosidl_message_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_c.so)
+==23991==    by 0x5756F62: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5766FB0: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5767406: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x57676DF: rmw_create_publisher (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B8E6F2: rcl_publisher_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4B8A6DC: rcl_logging_rosout_init_publisher_for_node (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4B8D3D9: rcl_node_init (in /opt/ros/galactic/lib/librcl.so)
+==23991== 
+==23991== 79 bytes in 1 blocks are still reachable in loss record 22 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4C0035C: rcutils_strndup (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFF15E: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991==    by 0x52696C8: rosidl_message_type_support_t const* rosidl_typesupport_c::get_typesupport_handle_function<rosidl_message_type_support_t>(rosidl_message_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_c.so)
+==23991==    by 0x5756F62: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5766FB0: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5767406: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x57676DF: rmw_create_publisher (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B8E6F2: rcl_publisher_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x5206917: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5207345: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991== 
+==23991== 80 bytes in 1 blocks are still reachable in loss record 23 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4C0035C: rcutils_strndup (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFF15E: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991==    by 0x52276C8: rosidl_message_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_message_type_support_t>(rosidl_message_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5756E94: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5767DC7: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x57681E7: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x576A6FF: rmw_create_subscription (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B93B3E: rcl_subscription_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4AAFE8D: rclcpp::SubscriptionBase::SubscriptionBase(rclcpp::node_interfaces::NodeBaseInterface*, rosidl_message_type_support_t const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rcl_subscription_options_t const&, bool) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x16570E: rclcpp::Subscription<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void>, rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > >::Subscription(rclcpp::node_interfaces::NodeBaseInterface*, rosidl_message_type_support_t const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&, rclcpp::AnySubscriptionCallback<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> >, rclcpp::SubscriptionOptionsWithAllocator<std::allocator<void> > const&, std::shared_ptr<rclcpp::message_memory_strategy::MessageMemoryStrategy<geometry_msgs::msg::Twist_<std::allocator<void> >, std::allocator<void> > >, std::shared_ptr<rclcpp::topic_statistics::SubscriptionTopicStatistics<geometry_msgs::msg::Twist_<std::allocator<void> > > >) (in /workspace/robotics/ros2/build/rpm_converter/rpm_converter_node)
+==23991== 
+==23991== 81 bytes in 1 blocks are still reachable in loss record 24 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4C0035C: rcutils_strndup (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFF15E: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991==    by 0x52276C8: rosidl_message_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_message_type_support_t>(rosidl_message_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5756E94: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5766FB0: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5767406: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5768BF9: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5769ED7: rmw_create_node (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B8D2E3: rcl_node_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4A49737: rclcpp::node_interfaces::NodeBase::NodeBase(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::shared_ptr<rclcpp::Context>, rcl_node_options_t const&, bool, bool) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991== 
+==23991== 81 bytes in 1 blocks are still reachable in loss record 25 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4C0035C: rcutils_strndup (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFF15E: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991==    by 0x5227E28: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4A9C898: rclcpp::Service<rcl_interfaces::srv::GetParameters>::Service(std::shared_ptr<rcl_node_t>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::AnyServiceCallback<rcl_interfaces::srv::GetParameters>, rcl_service_options_t&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A91F32: rclcpp::ParameterService::ParameterService(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, rclcpp::node_interfaces::NodeParametersInterface*, rmw_qos_profile_t const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A59D29: rclcpp::node_interfaces::NodeParameters::NodeParameters(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeLoggingInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeTopicsInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeClockInterface>, std::vector<rclcpp::Parameter, std::allocator<rclcpp::Parameter> > const&, bool, bool, rclcpp::QoS const&, rclcpp::PublisherOptionsBase const&, bool, bool) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4BD7952: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991== 
+==23991== 81 bytes in 1 blocks are still reachable in loss record 26 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4C0035C: rcutils_strndup (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFF15E: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991==    by 0x5227E28: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4A9D438: rclcpp::Service<rcl_interfaces::srv::GetParameterTypes>::Service(std::shared_ptr<rcl_node_t>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::AnyServiceCallback<rcl_interfaces::srv::GetParameterTypes>, rcl_service_options_t&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A9233B: rclcpp::ParameterService::ParameterService(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, rclcpp::node_interfaces::NodeParametersInterface*, rmw_qos_profile_t const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A59D29: rclcpp::node_interfaces::NodeParameters::NodeParameters(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeLoggingInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeTopicsInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeClockInterface>, std::vector<rclcpp::Parameter, std::allocator<rclcpp::Parameter> > const&, bool, bool, rclcpp::QoS const&, rclcpp::PublisherOptionsBase const&, bool, bool) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4BD7952: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991== 
+==23991== 81 bytes in 1 blocks are still reachable in loss record 27 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4C0035C: rcutils_strndup (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFF15E: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991==    by 0x5227E28: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4A9DFD8: rclcpp::Service<rcl_interfaces::srv::SetParameters>::Service(std::shared_ptr<rcl_node_t>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::AnyServiceCallback<rcl_interfaces::srv::SetParameters>, rcl_service_options_t&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A92745: rclcpp::ParameterService::ParameterService(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, rclcpp::node_interfaces::NodeParametersInterface*, rmw_qos_profile_t const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A59D29: rclcpp::node_interfaces::NodeParameters::NodeParameters(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeLoggingInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeTopicsInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeClockInterface>, std::vector<rclcpp::Parameter, std::allocator<rclcpp::Parameter> > const&, bool, bool, rclcpp::QoS const&, rclcpp::PublisherOptionsBase const&, bool, bool) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4BD7952: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991== 
+==23991== 81 bytes in 1 blocks are still reachable in loss record 28 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4C0035C: rcutils_strndup (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFF15E: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991==    by 0x5227E28: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4A9EB78: rclcpp::Service<rcl_interfaces::srv::SetParametersAtomically>::Service(std::shared_ptr<rcl_node_t>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::AnyServiceCallback<rcl_interfaces::srv::SetParametersAtomically>, rcl_service_options_t&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A92B4F: rclcpp::ParameterService::ParameterService(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, rclcpp::node_interfaces::NodeParametersInterface*, rmw_qos_profile_t const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A59D29: rclcpp::node_interfaces::NodeParameters::NodeParameters(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeLoggingInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeTopicsInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeClockInterface>, std::vector<rclcpp::Parameter, std::allocator<rclcpp::Parameter> > const&, bool, bool, rclcpp::QoS const&, rclcpp::PublisherOptionsBase const&, bool, bool) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4BD7952: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991== 
+==23991== 81 bytes in 1 blocks are still reachable in loss record 29 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4C0035C: rcutils_strndup (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFF15E: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991==    by 0x5227E28: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4A9F718: rclcpp::Service<rcl_interfaces::srv::DescribeParameters>::Service(std::shared_ptr<rcl_node_t>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::AnyServiceCallback<rcl_interfaces::srv::DescribeParameters>, rcl_service_options_t&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A92F59: rclcpp::ParameterService::ParameterService(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, rclcpp::node_interfaces::NodeParametersInterface*, rmw_qos_profile_t const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A59D29: rclcpp::node_interfaces::NodeParameters::NodeParameters(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeLoggingInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeTopicsInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeClockInterface>, std::vector<rclcpp::Parameter, std::allocator<rclcpp::Parameter> > const&, bool, bool, rclcpp::QoS const&, rclcpp::PublisherOptionsBase const&, bool, bool) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4BD7952: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991== 
+==23991== 81 bytes in 1 blocks are still reachable in loss record 30 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4C0035C: rcutils_strndup (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFF15E: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991==    by 0x5227E28: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4AA02B8: rclcpp::Service<rcl_interfaces::srv::ListParameters>::Service(std::shared_ptr<rcl_node_t>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::AnyServiceCallback<rcl_interfaces::srv::ListParameters>, rcl_service_options_t&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A93359: rclcpp::ParameterService::ParameterService(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, rclcpp::node_interfaces::NodeParametersInterface*, rmw_qos_profile_t const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A59D29: rclcpp::node_interfaces::NodeParameters::NodeParameters(std::shared_ptr<rclcpp::node_interfaces::NodeBaseInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeLoggingInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeTopicsInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeServicesInterface>, std::shared_ptr<rclcpp::node_interfaces::NodeClockInterface>, std::vector<rclcpp::Parameter, std::allocator<rclcpp::Parameter> > const&, bool, bool, rclcpp::QoS const&, rclcpp::PublisherOptionsBase const&, bool, bool) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4BD7952: rclcpp_lifecycle::LifecycleNode::LifecycleNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&, bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991== 
+==23991== 81 bytes in 1 blocks are still reachable in loss record 31 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4C0035C: rcutils_strndup (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFF15E: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991==    by 0x52276C8: rosidl_message_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_message_type_support_t>(rosidl_message_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5756E94: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5766FB0: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5767406: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x57676DF: rmw_create_publisher (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B8E6F2: rcl_publisher_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4AA769E: rclcpp::PublisherBase::PublisherBase(rclcpp::node_interfaces::NodeBaseInterface*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rosidl_message_type_support_t const&, rcl_publisher_options_t const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A68395: rclcpp::Publisher<rcl_interfaces::msg::ParameterEvent_<std::allocator<void> >, std::allocator<void> >::Publisher(rclcpp::node_interfaces::NodeBaseInterface*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&, rclcpp::PublisherOptionsWithAllocator<std::allocator<void> > const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991== 
+==23991== 81 bytes in 1 blocks are still reachable in loss record 32 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4C0035C: rcutils_strndup (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFF15E: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991==    by 0x5227E28: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x5207111: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5207380: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5208D88: rcl_lifecycle_state_machine_init (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x4BE1B75: rclcpp_lifecycle::LifecycleNode::LifecycleNodeInterfaceImpl::init(bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991== 
+==23991== 81 bytes in 1 blocks are still reachable in loss record 33 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4C0035C: rcutils_strndup (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFF15E: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991==    by 0x5227E28: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x5207170: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5207380: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5208D88: rcl_lifecycle_state_machine_init (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x4BE1B75: rclcpp_lifecycle::LifecycleNode::LifecycleNodeInterfaceImpl::init(bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991== 
+==23991== 81 bytes in 1 blocks are still reachable in loss record 34 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4C0035C: rcutils_strndup (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFF15E: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991==    by 0x5227E28: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x5207195: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5207380: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5208D88: rcl_lifecycle_state_machine_init (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x4BE1B75: rclcpp_lifecycle::LifecycleNode::LifecycleNodeInterfaceImpl::init(bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991== 
+==23991== 81 bytes in 1 blocks are still reachable in loss record 35 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4C0035C: rcutils_strndup (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFF15E: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991==    by 0x5227E28: rosidl_service_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_service_type_support_t>(rosidl_service_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5761755: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5762901: rmw_create_service (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B923AC: rcl_service_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x52071BF: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5207380: ??? (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x5208D88: rcl_lifecycle_state_machine_init (in /opt/ros/galactic/lib/librcl_lifecycle.so)
+==23991==    by 0x4BE1B75: rclcpp_lifecycle::LifecycleNode::LifecycleNodeInterfaceImpl::init(bool) (in /opt/ros/galactic/lib/librclcpp_lifecycle.so)
+==23991== 
+==23991== 89 bytes in 1 blocks are still reachable in loss record 36 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4C0035C: rcutils_strndup (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFF15E: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991==    by 0x52276C8: rosidl_message_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_message_type_support_t>(rosidl_message_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5756E94: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5766FB0: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5767406: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x57676DF: rmw_create_publisher (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B8E6F2: rcl_publisher_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4AA769E: rclcpp::PublisherBase::PublisherBase(rclcpp::node_interfaces::NodeBaseInterface*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rosidl_message_type_support_t const&, rcl_publisher_options_t const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x48EBB65: rclcpp::Publisher<cascade_lifecycle_msgs::msg::Activation_<std::allocator<void> >, std::allocator<void> >::Publisher(rclcpp::node_interfaces::NodeBaseInterface*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&, rclcpp::PublisherOptionsWithAllocator<std::allocator<void> > const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991== 
+==23991== 89 bytes in 1 blocks are still reachable in loss record 37 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4C0035C: rcutils_strndup (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x4BFF15E: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991==    by 0x52276C8: rosidl_message_type_support_t const* rosidl_typesupport_cpp::get_typesupport_handle_function<rosidl_message_type_support_t>(rosidl_message_type_support_t const*, char const*) (in /opt/ros/galactic/lib/librosidl_typesupport_cpp.so)
+==23991==    by 0x5756E94: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5766FB0: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5767406: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x57676DF: rmw_create_publisher (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B8E6F2: rcl_publisher_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4AA769E: rclcpp::PublisherBase::PublisherBase(rclcpp::node_interfaces::NodeBaseInterface*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rosidl_message_type_support_t const&, rcl_publisher_options_t const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x48EC6B5: rclcpp::Publisher<cascade_lifecycle_msgs::msg::State_<std::allocator<void> >, std::allocator<void> >::Publisher(rclcpp::node_interfaces::NodeBaseInterface*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::QoS const&, rclcpp::PublisherOptionsWithAllocator<std::allocator<void> > const&) (in /opt/ros/galactic/lib/librclcpp_cascade_lifecycle.so)
+==23991== 
+==23991== 104 bytes in 1 blocks are still reachable in loss record 38 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x5757020: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x5773F32: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x57657C0: rmw_create_wait_set (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B9A60F: rcl_wait_set_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4A1C4C9: rclcpp::Executor::Executor(rclcpp::ExecutorOptions const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A2106C: rclcpp::executors::SingleThreadedExecutor::SingleThreadedExecutor(rclcpp::ExecutorOptions const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x12DDDC: main (in /workspace/robotics/ros2/build/rpm_converter/rpm_converter_node)
+==23991== 
+==23991== 142 bytes in 4 blocks are still reachable in loss record 39 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x401F5DE: strdup (strdup.c:42)
+==23991==    by 0x4019A91: _dl_load_cache_lookup (dl-cache.c:338)
+==23991==    by 0x400A989: _dl_map_object (dl-load.c:2102)
+==23991==    by 0x400F514: openaux (dl-deps.c:64)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x400F962: _dl_map_object_deps (dl-deps.c:248)
+==23991==    by 0x4015DAF: dl_open_worker (dl-open.c:571)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4015609: _dl_open (dl-open.c:837)
+==23991==    by 0x522134B: dlopen_doit (dlopen.c:66)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991== 
+==23991== 176 bytes in 2 blocks are still reachable in loss record 40 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x400CDCE: add_dependency (dl-lookup.c:754)
+==23991==    by 0x400CDCE: _dl_lookup_symbol_x (dl-lookup.c:935)
+==23991==    by 0x400DF23: elf_machine_rela (dl-machine.h:308)
+==23991==    by 0x400DF23: elf_dynamic_do_Rela (do-rel.h:137)
+==23991==    by 0x400DF23: _dl_relocate_object (dl-reloc.c:255)
+==23991==    by 0x4015F6B: dl_open_worker (dl-open.c:688)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4015609: _dl_open (dl-open.c:837)
+==23991==    by 0x522134B: dlopen_doit (dlopen.c:66)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4F8E9F2: _dl_catch_error (dl-error-skeleton.c:227)
+==23991==    by 0x5221B58: _dlerror_run (dlerror.c:170)
+==23991==    by 0x52213D9: dlopen@@GLIBC_2.2.5 (dlopen.c:87)
+==23991==    by 0x4BFF10B: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991== 
+==23991== 192 bytes in 1 blocks are still reachable in loss record 41 of 50
+==23991==    at 0x483BE63: operator new(unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x5755C81: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x57654B7: rmw_create_wait_set (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B9A60F: rcl_wait_set_init (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4A1C4C9: rclcpp::Executor::Executor(rclcpp::ExecutorOptions const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A2106C: rclcpp::executors::SingleThreadedExecutor::SingleThreadedExecutor(rclcpp::ExecutorOptions const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x12DDDC: main (in /workspace/robotics/ros2/build/rpm_converter/rpm_converter_node)
+==23991== 
+==23991== 482 bytes in 9 blocks are still reachable in loss record 42 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4008C82: open_path (dl-load.c:1882)
+==23991==    by 0x400A7A2: _dl_map_object (dl-load.c:2067)
+==23991==    by 0x400F514: openaux (dl-deps.c:64)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x400F962: _dl_map_object_deps (dl-deps.c:248)
+==23991==    by 0x4015DAF: dl_open_worker (dl-open.c:571)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4015609: _dl_open (dl-open.c:837)
+==23991==    by 0x522134B: dlopen_doit (dlopen.c:66)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4F8E9F2: _dl_catch_error (dl-error-skeleton.c:227)
+==23991== 
+==23991== 617 bytes in 8 blocks are still reachable in loss record 43 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x4008C82: open_path (dl-load.c:1882)
+==23991==    by 0x400A7A2: _dl_map_object (dl-load.c:2067)
+==23991==    by 0x4015D46: dl_open_worker (dl-open.c:513)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4015609: _dl_open (dl-open.c:837)
+==23991==    by 0x522134B: dlopen_doit (dlopen.c:66)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4F8E9F2: _dl_catch_error (dl-error-skeleton.c:227)
+==23991==    by 0x5221B58: _dlerror_run (dlerror.c:170)
+==23991==    by 0x52213D9: dlopen@@GLIBC_2.2.5 (dlopen.c:87)
+==23991==    by 0x4BFF10B: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991== 
+==23991== 617 bytes in 8 blocks are still reachable in loss record 44 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x400D5B7: _dl_new_object (dl-object.c:196)
+==23991==    by 0x4006E96: _dl_map_object_from_fd (dl-load.c:997)
+==23991==    by 0x400A61A: _dl_map_object (dl-load.c:2236)
+==23991==    by 0x4015D46: dl_open_worker (dl-open.c:513)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4015609: _dl_open (dl-open.c:837)
+==23991==    by 0x522134B: dlopen_doit (dlopen.c:66)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4F8E9F2: _dl_catch_error (dl-error-skeleton.c:227)
+==23991==    by 0x5221B58: _dlerror_run (dlerror.c:170)
+==23991==    by 0x52213D9: dlopen@@GLIBC_2.2.5 (dlopen.c:87)
+==23991== 
+==23991== 624 bytes in 13 blocks are still reachable in loss record 45 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x400D5B7: _dl_new_object (dl-object.c:196)
+==23991==    by 0x4006E96: _dl_map_object_from_fd (dl-load.c:997)
+==23991==    by 0x400A61A: _dl_map_object (dl-load.c:2236)
+==23991==    by 0x400F514: openaux (dl-deps.c:64)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x400F962: _dl_map_object_deps (dl-deps.c:248)
+==23991==    by 0x4015DAF: dl_open_worker (dl-open.c:571)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4015609: _dl_open (dl-open.c:837)
+==23991==    by 0x522134B: dlopen_doit (dlopen.c:66)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991== 
+==23991== 2,072 bytes in 1 blocks are still reachable in loss record 46 of 50
+==23991==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x40142CF: allocate_dtv_entry (dl-tls.c:582)
+==23991==    by 0x40142CF: allocate_and_init (dl-tls.c:607)
+==23991==    by 0x40142CF: tls_get_addr_tail.isra.0 (dl-tls.c:787)
+==23991==    by 0x401ADEB: __tls_get_addr (tls_get_addr.S:55)
+==23991==    by 0x5858A15: thread_states_init (in /opt/ros/galactic/lib/x86_64-linux-gnu/libddsc.so.0.8.0)
+==23991==    by 0x5869767: dds_init (in /opt/ros/galactic/lib/x86_64-linux-gnu/libddsc.so.0.8.0)
+==23991==    by 0x587CCD1: dds_create_guardcondition (in /opt/ros/galactic/lib/x86_64-linux-gnu/libddsc.so.0.8.0)
+==23991==    by 0x575615D: ??? (in /opt/ros/galactic/lib/librmw_cyclonedds_cpp.so)
+==23991==    by 0x4B876A5: ??? (in /opt/ros/galactic/lib/librcl.so)
+==23991==    by 0x4A2D3DF: rclcpp::GuardCondition::GuardCondition(std::shared_ptr<rclcpp::Context>) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A1C058: rclcpp::Executor::Executor(rclcpp::ExecutorOptions const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x4A2106C: rclcpp::executors::SingleThreadedExecutor::SingleThreadedExecutor(rclcpp::ExecutorOptions const&) (in /opt/ros/galactic/lib/librclcpp.so)
+==23991==    by 0x12DDDC: main (in /workspace/robotics/ros2/build/rpm_converter/rpm_converter_node)
+==23991== 
+==23991== 5,112 bytes in 16 blocks are still reachable in loss record 47 of 50
+==23991==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x401331C: _dl_check_map_versions (dl-version.c:274)
+==23991==    by 0x40160FC: dl_open_worker (dl-open.c:577)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4015609: _dl_open (dl-open.c:837)
+==23991==    by 0x522134B: dlopen_doit (dlopen.c:66)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4F8E9F2: _dl_catch_error (dl-error-skeleton.c:227)
+==23991==    by 0x5221B58: _dlerror_run (dlerror.c:170)
+==23991==    by 0x52213D9: dlopen@@GLIBC_2.2.5 (dlopen.c:87)
+==23991==    by 0x4BFF10B: rcutils_load_shared_library (in /opt/ros/galactic/lib/librcutils.so)
+==23991==    by 0x5073734: rcpputils::SharedLibrary::SharedLibrary(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /opt/ros/galactic/lib/librcpputils.so)
+==23991== 
+==23991== 9,913 bytes in 8 blocks are still reachable in loss record 48 of 50
+==23991==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x400D283: _dl_new_object (dl-object.c:89)
+==23991==    by 0x4006E96: _dl_map_object_from_fd (dl-load.c:997)
+==23991==    by 0x400A61A: _dl_map_object (dl-load.c:2236)
+==23991==    by 0x4015D46: dl_open_worker (dl-open.c:513)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4015609: _dl_open (dl-open.c:837)
+==23991==    by 0x522134B: dlopen_doit (dlopen.c:66)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4F8E9F2: _dl_catch_error (dl-error-skeleton.c:227)
+==23991==    by 0x5221B58: _dlerror_run (dlerror.c:170)
+==23991==    by 0x52213D9: dlopen@@GLIBC_2.2.5 (dlopen.c:87)
+==23991== 
+==23991== 15,713 bytes in 13 blocks are still reachable in loss record 49 of 50
+==23991==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x400D283: _dl_new_object (dl-object.c:89)
+==23991==    by 0x4006E96: _dl_map_object_from_fd (dl-load.c:997)
+==23991==    by 0x400A61A: _dl_map_object (dl-load.c:2236)
+==23991==    by 0x400F514: openaux (dl-deps.c:64)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x400F962: _dl_map_object_deps (dl-deps.c:248)
+==23991==    by 0x4015DAF: dl_open_worker (dl-open.c:571)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4015609: _dl_open (dl-open.c:837)
+==23991==    by 0x522134B: dlopen_doit (dlopen.c:66)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991== 
+==23991== 16,288 bytes in 1 blocks are still reachable in loss record 50 of 50
+==23991==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23991==    by 0x400BEA2: do_lookup_unique (dl-lookup.c:276)
+==23991==    by 0x400BEA2: do_lookup_x (dl-lookup.c:557)
+==23991==    by 0x400C1F0: _dl_lookup_symbol_x (dl-lookup.c:861)
+==23991==    by 0x400DF23: elf_machine_rela (dl-machine.h:308)
+==23991==    by 0x400DF23: elf_dynamic_do_Rela (do-rel.h:137)
+==23991==    by 0x400DF23: _dl_relocate_object (dl-reloc.c:255)
+==23991==    by 0x4015F6B: dl_open_worker (dl-open.c:688)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4015609: _dl_open (dl-open.c:837)
+==23991==    by 0x522134B: dlopen_doit (dlopen.c:66)
+==23991==    by 0x4F8E927: _dl_catch_exception (dl-error-skeleton.c:208)
+==23991==    by 0x4F8E9F2: _dl_catch_error (dl-error-skeleton.c:227)
+==23991==    by 0x5221B58: _dlerror_run (dlerror.c:170)
+==23991==    by 0x52213D9: dlopen@@GLIBC_2.2.5 (dlopen.c:87)
+==23991== 
+==23991== LEAK SUMMARY:
+==23991==    definitely lost: 0 bytes in 0 blocks
+==23991==    indirectly lost: 0 bytes in 0 blocks
+==23991==      possibly lost: 0 bytes in 0 blocks
+==23991==    still reachable: 54,688 bytes in 122 blocks
+==23991==         suppressed: 0 bytes in 0 blocks
+==23991== 
+==23991== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
