@@ -1,0 +1,82 @@
+# -----------------------------------------------------------------------------
+# dadaroce (davidson@kiwibot.com)
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+FROM ubuntu:20.04
+
+# Or your actual UID, GID on Linux if not the default 1000
+ARG USERNAME=koda
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+ENV DEBIAN_FRONTEND noninteractive
+
+# -----------------------------------------------------------------------------
+# Create the user
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
+    && apt-get update \
+    && apt-get install -y sudo \
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME \
+    # ------------------------------
+    # Free memory
+    && apt autoremove -y && apt clean -y \
+    && rm -rf /var/lib/apt/lists/*
+
+# -----------------------------------------------------------------------------
+# Install essentials
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    # ------------------------------
+    # Basics
+    apt-utils \
+    bash-completion \
+    build-essential \
+    htop \
+    lsb-release \
+    openssh-client \
+    # ------------------------------
+    # Download repositories and files
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    git \
+    gnupg-agent \
+    gnupg2 \
+    iproute2 \
+    wget \
+    # ------------------------------
+    # Install clang formater
+    clang-format \
+    # ------------------------------
+    # Parsing yaml in c++
+    libyaml-cpp-dev \
+    # ------------------------------
+    # Python
+    python3 \
+    python3-argcomplete \
+    python3-distutils \
+    python3-pip \
+    python3-tk
+
+# -----------------------------------------------------------------------------
+# Install OpenCV
+RUN apt update && sudo apt install -y cmake g++ wget unzip
+# Download and unpack sources
+RUN wget -O opencv.zip https://github.com/opencv/opencv/archive/4.x.zip
+RUN unzip opencv.zip
+# Create build directory
+RUN mkdir -p build && cd build
+# Configure
+RUN cmake  ../opencv-4.x
+# Build
+RUN cmake --build .
+# install
+RUN make install
+
+# -----------------------------------------------------------------------------
+# Switch back to dialog for any ad-hoc use of apt-get
+ENV DEBIAN_FRONTEND=
+CMD ["/bin/bash"]
