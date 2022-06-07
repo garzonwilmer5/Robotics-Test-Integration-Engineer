@@ -15,6 +15,7 @@ import threading
 import os
 
 from matplotlib.style import context
+import mplcyberpunk
 
 # ROS2 dependencies
 import rclpy
@@ -52,45 +53,45 @@ class Plotter(Node):
         # =============================================================================
         # Define Plotter Variables
         # =============================================================================
-        self.fig, self.ax = plt.subplots(1, 3)
-        self.fig.suptitle("Amazing Plotter", fontsize=16)
-        self.fig.set_size_inches(18.5, 10.5)
-        self.window_size = 500
-        # =============================================================================
-        # Controller Lines
-        # =============================================================================
+        with plt.style.context("cyberpunk"):
+            self.fig, self.ax = plt.subplots(1, 3)
+            self.fig.set_size_inches(18.5, 10.5)
+            self.window_size = 500
+            # =============================================================================
+            # Controller Lines
+            # =============================================================================
 
-        # Linear
-        (self.control_lin_ln,) = self.ax[0].plot(
-            [], [], "r", label="Control Linear Signal"
-        )
-        (self.error_linear_ln,) = self.ax[0].plot([], [], "b", label="Linear Error")
-        self.controller_lin_lns = [self.control_lin_ln, self.error_linear_ln]
-        self.ax[0].legend()
-        self.x_linear_data, self.y_linear_data = [[], []], [[], []]
+            # Linear
+            (self.control_lin_ln,) = self.ax[0].plot(
+                [], [], label="Control Linear Signal"
+            )
+            (self.error_linear_ln,) = self.ax[0].plot([], [], label="Linear Error")
+            self.controller_lin_lns = [self.control_lin_ln, self.error_linear_ln]
+            self.ax[0].legend()
+            self.x_linear_data, self.y_linear_data = [[], []], [[], []]
 
-        # Angular
-        (self.control_ang_ln,) = self.ax[1].plot(
-            [], [], "r", label="Control Angular Signal"
-        )
-        (self.error_angular_ln,) = self.ax[1].plot([], [], "b", label="Angular Error")
-        self.controller_ang_lns = [self.control_ang_ln, self.error_angular_ln]
-        self.ax[1].legend()
-        self.x_ang_data, self.y_ang_data = [[], []], [[], []]
+            # Angular
+            (self.control_ang_ln,) = self.ax[1].plot(
+                [], [], label="Control Angular Signal"
+            )
+            (self.error_angular_ln,) = self.ax[1].plot([], [], label="Angular Error")
+            self.controller_ang_lns = [self.control_ang_ln, self.error_angular_ln]
+            self.ax[1].legend()
+            self.x_ang_data, self.y_ang_data = [[], []], [[], []]
 
-        # RPM
-        (self.fr_rpm_ln,) = self.ax[2].plot([], [], "r", label="FR RPM")
-        (self.fl_rpm_ln,) = self.ax[2].plot([], [], "b", label="FL RPM")
-        (self.rr_rpm_ln,) = self.ax[2].plot([], [], "g", label="RR RPM")
-        (self.rl_rpm_ln,) = self.ax[2].plot([], [], "c", label="RL RPM")
-        self.rpm_lns = [
-            self.fr_rpm_ln,
-            self.fl_rpm_ln,
-            self.rr_rpm_ln,
-            self.rl_rpm_ln,
-        ]
-        self.ax[2].legend()
-        self.x_rpm_data, self.y_rpm_data = [[], [], [], []], [[], [], [], []]
+            # RPM
+            (self.fr_rpm_ln,) = self.ax[2].plot([], [], label="FR RPM")
+            (self.fl_rpm_ln,) = self.ax[2].plot([], [], label="FL RPM")
+            (self.rr_rpm_ln,) = self.ax[2].plot([], [], label="RR RPM")
+            (self.rl_rpm_ln,) = self.ax[2].plot([], [], label="RL RPM")
+            self.rpm_lns = [
+                self.fr_rpm_ln,
+                self.fl_rpm_ln,
+                self.rr_rpm_ln,
+                self.rl_rpm_ln,
+            ]
+            self.ax[2].legend()
+            self.x_rpm_data, self.y_rpm_data = [[], [], [], []], [[], [], [], []]
 
         # =============================================================================
         # ROS2 Stuffs
@@ -275,7 +276,9 @@ def main(args=None) -> None:
         interval=plotter_node.window_size,
         blit=False,
     )
-
+    # Add style
+    for ax in plotter_node.ax:
+        mplcyberpunk.add_glow_effects(ax)
     plt.show(block=True)
 
     # Destroy the node explicitly

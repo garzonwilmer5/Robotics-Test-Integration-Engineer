@@ -134,6 +134,7 @@ RUN pip3 install -U pip \
     # ------------------------------
     # Plotter Tools
     matplotlib\
+    mplcyberpunk\
     && rm -rf /home/koda/.cache/pip
 
 # ------------------------------------------------------------------------------
