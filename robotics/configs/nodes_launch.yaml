@@ -1,29 +1,29 @@
 NODE_INTERFACES:
-  launch: 1
+  launch: 0
   node_executable: interfaces_node
   package: interfaces
   respawn: true
   respawn_delay: 5.0
 NODE_LIFECYCLE_MANAGER:
-  launch: 0
+  launch: 1
   node_executable: lifecycle_manager
   package: lifecycle_manager
   respawn: true
   respawn_delay: 5.0
 NODE_MOTION_SPEED_CONTROL:
-  launch: 0
+  launch: 1
   node_executable: speed_controller
   package: motion_control
   respawn: true
   respawn_delay: 5.0
 NODE_PLOTTER:
-  launch: 0
+  launch: 1
   node_executable: plotter_node
   package: plotter
   respawn: true
   respawn_delay: 5.0
 NODE_RPM_CONVERTER:
-  launch: 0
+  launch: 1
   node_executable: rpm_converter_node
   package: rpm_converter
   respawn: true
@@ -35,7 +35,7 @@ NODE_WHEEL_ODOMETRY:
   respawn: true
   respawn_delay: 5.0
 NODE_CUSTOM_GPS:
-  launch: 0
+  launch: 1
   node_executable: custom_gps
   package: custom_gps
   respawn: true

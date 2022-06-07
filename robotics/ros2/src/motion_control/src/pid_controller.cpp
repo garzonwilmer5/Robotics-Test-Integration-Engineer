@@ -16,10 +16,10 @@ PIDController::PIDController() {}
 float PIDController::ThrottlePID(float ref_vx, float cur_vx, double dt)
 {
     // Don't use controller
-    if(m_throttle_ctrl) 
+    if (!m_throttle_ctrl) 
         return ref_vx;
     // reference 0
-    if(std::fabs(ref_vx) < EPSILON)
+    if (std::fabs(ref_vx) < EPSILON)
     { 
         m_vx_int_error = 0.0;
         return 0.0f;
@@ -39,7 +39,7 @@ float PIDController::ThrottlePID(float ref_vx, float cur_vx, double dt)
     // Anti-Windup: Back-calculation
     float ep = 0;
     // saturated signal
-    if(m_max_linear_spd < std::fabs(cur_vx))
+    if (m_max_linear_spd < std::fabs(cur_vx))
     {
         ep = cur_vx > 0 ? 
                 m_max_linear_spd - cur_vx : 
@@ -57,7 +57,7 @@ float PIDController::ThrottlePID(float ref_vx, float cur_vx, double dt)
 float PIDController::SteeringPID(float ref_wz, float cur_wz, double dt)
 {
     // Don't use controller
-    if(m_steering_ctrl) 
+    if (!m_steering_ctrl) 
         return ref_wz;
     // reference 0
     if(std::fabs(ref_wz) < EPSILON)
